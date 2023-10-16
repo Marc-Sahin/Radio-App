@@ -10,7 +10,7 @@ public class Song {
     public String interpret;
     public String album;
     public int länge;
-    public int comment = 0;
+
 
     public Song() {
 
@@ -56,11 +56,4 @@ public class Song {
         this.länge = länge;
     }
 
-    public int getComment() {
-        return comment;
-    }
-
-    public void setComment(int comment) {
-        this.comment = comment;
-    }
 }
