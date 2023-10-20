@@ -31,6 +31,12 @@
                     android:orientation="vertical"
                     android:padding="5dp">
 
+                    <androidx.media3.ui.PlayerView android:id="@+id/player_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:show_shuffle_button="true"
+                        app:show_subtitle_button="true"/>
+
                     <TextView
                         android:id="@+id/album"
                         android:layout_width="200dp"

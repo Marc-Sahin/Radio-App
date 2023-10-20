@@ -1,5 +1,8 @@
 package com.example.radio.adapter;
 
+import static java.security.AccessController.getContext;
+
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.media3.exoplayer.ExoPlayer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -20,6 +24,7 @@ import java.util.List;
  */
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
     List<Song> songList;
+
     public SongAdapter(List<Song> songList){
         this.songList = songList;
     }
@@ -33,6 +38,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.album.setText(songList.get(position).getAlbum());
         holder.interpret.setText(songList.get(position).getInterpret());
+
     }
     @Override
     public int getItemCount() {
@@ -45,6 +51,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
         View view;
         TextView album;
         TextView interpret;
+
+        private Context context;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

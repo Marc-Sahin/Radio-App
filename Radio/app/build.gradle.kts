@@ -37,7 +37,9 @@ android {
 }
 
 dependencies {
-
+    implementation ("androidx.media3:media3-exoplayer:1.1.1")
+    implementation ("androidx.media3:media3-ui:1.1.1")
+    implementation ("androidx.media3:media3-common:1.1.1")
     //Glide
     implementation ("androidx.appcompat:appcompat:1.6.1")
     implementation ("com.google.android.material:material:1.10.0")

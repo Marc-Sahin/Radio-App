@@ -17,6 +17,7 @@ public class Song {
     }
 
     public String getAvgbewertung() {
+
         return avgbewertung;
     }
 
@@ -25,10 +26,12 @@ public class Song {
     }
 
     public String getTitle() {
+
         return title;
     }
 
     public void setTitle(String title) {
+
         this.title = title;
     }
 

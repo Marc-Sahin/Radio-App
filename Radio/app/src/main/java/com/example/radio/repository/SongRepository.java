@@ -15,6 +15,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 public class SongRepository
 {
@@ -30,10 +31,13 @@ public class SongRepository
         songMutableLiveData = new MutableLiveData<>();
 
     }
+
+
     //get song from firebase firestore
     public MutableLiveData<List<Song>> getSongListMutableLiveData() {
         Log.i("TAG", "getSongListMutableLiveData: ");
-        mFirestore.collection("playlist").document("80er Rock").collection("songs").addSnapshotListener(new EventListener<QuerySnapshot>() {
+
+        mFirestore.collectionGroup("songs").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 List<Song> songList = new ArrayList<>();
