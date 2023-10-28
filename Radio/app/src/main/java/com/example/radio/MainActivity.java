@@ -18,6 +18,7 @@ import android.view.View;
 
 import com.arges.sepan.argmusicplayer.Models.ArgAudio;
 import com.arges.sepan.argmusicplayer.Models.ArgAudioList;
+import com.arges.sepan.argmusicplayer.Models.ArgNotificationOptions;
 import com.arges.sepan.argmusicplayer.PlayerViews.ArgPlayerLargeView;
 import com.arges.sepan.argmusicplayer.PlayerViews.ArgPlayerSmallView;
 import com.example.radio.adapter.SongAdapter;
@@ -37,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.single_song_item);
         ArgPlayerLargeView argMusicPlayer = (ArgPlayerLargeView) findViewById(R.id.argmusicplayer);
-        // Initialize the ViewModel
+        argMusicPlayer.enableNotification(new ArgNotificationOptions(this).setProgressEnabled(true));
+// Initialize the ViewModel
         SongViewModel songViewModel = new ViewModelProvider(this).get(SongViewModel.class);
 
         // Initialize your ArgPlayerSmallView
