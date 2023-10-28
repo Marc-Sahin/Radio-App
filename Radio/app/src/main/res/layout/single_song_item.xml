@@ -30,30 +30,11 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="5dp">
-
-                    <androidx.media3.ui.PlayerView android:id="@+id/player_view"
+                    <com.arges.sepan.argmusicplayer.PlayerViews.ArgPlayerSmallView
+                        android:id="@+id/argmusicplayer"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:show_shuffle_button="true"
-                        app:show_subtitle_button="true"/>
+                        android:layout_height="wrap_content"/>
 
-                    <TextView
-                        android:id="@+id/album"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:text="TextView"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/interpret"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:text="TextView" />
-                    <TextView
-                        android:id="@+id/länge"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:text="TextView" />
 
                 </LinearLayout>
             </LinearLayout>

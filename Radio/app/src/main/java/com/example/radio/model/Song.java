@@ -11,6 +11,8 @@ public class Song {
     public String album;
     public int länge;
 
+    public int veröffentlichung;
+public String url;
 
     public Song() {
 
@@ -59,4 +61,19 @@ public class Song {
         this.länge = länge;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public int getVeröffentlichung() {
+        return veröffentlichung;
+    }
+
+    public void setVeröffentlichung(int veröffentlichung) {
+        this.veröffentlichung = veröffentlichung;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }
