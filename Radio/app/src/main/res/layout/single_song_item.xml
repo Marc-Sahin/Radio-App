@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="5dp">
-                    <com.arges.sepan.argmusicplayer.PlayerViews.ArgPlayerSmallView
+                    <com.arges.sepan.argmusicplayer.PlayerViews.ArgPlayerLargeView
                         android:id="@+id/argmusicplayer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
