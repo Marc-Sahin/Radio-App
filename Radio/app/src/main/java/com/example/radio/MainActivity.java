@@ -37,8 +37,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.single_song_item);
+
         ArgPlayerLargeView argMusicPlayer = (ArgPlayerLargeView) findViewById(R.id.argmusicplayer);
         argMusicPlayer.enableNotification(new ArgNotificationOptions(this).setProgressEnabled(true));
+        argMusicPlayer.disableNextPrevButtons();
+        argMusicPlayer.disableProgress();
+
 // Initialize the ViewModel
         SongViewModel songViewModel = new ViewModelProvider(this).get(SongViewModel.class);
 
