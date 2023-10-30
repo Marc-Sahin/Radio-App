@@ -15,7 +15,6 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
 import com.arges.sepan.argmusicplayer.Models.ArgAudio;
 import com.arges.sepan.argmusicplayer.Models.ArgAudioList;
 import com.arges.sepan.argmusicplayer.Models.ArgNotificationOptions;
