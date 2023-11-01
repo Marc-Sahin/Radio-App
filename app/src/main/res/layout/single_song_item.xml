@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     android:background="#FFC400">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,6 +19,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/moderatorImageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:contentDescription="moderator_onair"
+            android:scaleType="centerInside" />
+
+            <TextView
+                android:id="@+id/moderatorNameTextView"
+                style="@style/myRadioButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_toRightOf="@id/moderatorImageView"
+                android:fontFamily="sans-serif-black"
+                android:text="Moderator Name on Air"
+                android:textSize="20sp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,21 +73,20 @@
                 style="@style/myRadioButtonStyle"
                 android:layout_width="match_parent"
                 android:text="@string/song_w_nschen"
-                android:textColor="#050505"
+                android:textAllCaps="false"
+                android:textColorLink="#CB1818"
                 android:textSize="34sp" />
 
             <Button
                 android:id="@+id/playlists_btn"
                 style="@style/myRadioButtonStyle"
                 android:text="@string/playlists"
-                android:textColor="#070707"
                 android:textSize="34sp" />
 
             <Button
                 android:id="@+id/deineMeinung_btn"
                 style="@style/myRadioButtonStyle"
                 android:text="@string/deine_meinung"
-                android:textColor="#070707"
                 android:textSize="34sp" />
 
             <com.google.android.material.card.MaterialCardView
@@ -74,4 +105,6 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,36 +1,29 @@
 package com.example.radio;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.media3.common.MediaItem;
-import androidx.media3.exoplayer.ExoPlayer;
-import androidx.media3.exoplayer.SimpleExoPlayer;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.arges.sepan.argmusicplayer.Models.ArgAudio;
 import com.arges.sepan.argmusicplayer.Models.ArgAudioList;
 import com.arges.sepan.argmusicplayer.Models.ArgNotificationOptions;
 import com.arges.sepan.argmusicplayer.PlayerViews.ArgPlayerLargeView;
 import com.arges.sepan.argmusicplayer.PlayerViews.ArgPlayerSmallView;
-import com.example.radio.adapter.SongAdapter;
 import com.example.radio.model.Song;
 import com.example.radio.viewmodel.SongViewModel;
-import com.google.firebase.FirebaseApp;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
+
 
 public class MainActivity extends AppCompatActivity {
     private SongViewModel songViewModel;
     private ArgPlayerSmallView argMusicPlayer;
+
+    private ImageView moderatorImageView;
+    private TextView moderatorNameTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             if (song != null) {
                 ArgAudioList playlist = new ArgAudioList(true);
                 for (int i = 0; i < song.size(); i++) {
-                    Song currentSong=song.get(i);
+                    Song currentSong = song.get(i);
                     String url = currentSong.getUrl();
                     ArgAudio audio = ArgAudio.createFromURL(currentSong.getInterpret(), currentSong.getTitle(), url);
                     //Define audio2, audio3, audio4 ......
@@ -65,6 +58,31 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-            });
+        });
+
+        moderatorImageView = findViewById(R.id.moderatorImageView);
+        moderatorNameTextView = findViewById(R.id.moderatorNameTextView);
+
+        // Holen der aktuellen Tageszeit
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+
+        // Bestimmen des passenden Moderators basierend auf der Tageszeit
+        String moderatorName;
+        if (hour >= 5 && hour < 12) {
+            moderatorImageView.setImageResource(R.drawable.marc);
+            moderatorName = "Marc";
+        } else if (hour >= 12 && hour < 18) {
+            moderatorImageView.setImageResource(R.drawable.glademir);
+            moderatorName = "Glademir";
+        } else {
+            moderatorImageView.setImageResource(R.drawable.sandra);
+            moderatorName = "Sandra";
+        }
+        // Den Namen des Moderators in das TextView einfügen
+        moderatorNameTextView.setText("\n \n on Air: \n \n" +  moderatorName);
+
     }
+
 }
+
