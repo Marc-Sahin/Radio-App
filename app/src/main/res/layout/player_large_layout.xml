@@ -6,10 +6,6 @@
     android:layout_gravity="center_horizontal"
     android:paddingStart="2dp"
     android:paddingEnd="2dp">
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
         >
     <RelativeLayout
         android:id="@+id/arg_music_panel_layout"
@@ -17,6 +13,7 @@
         android:layout_height="100dp"
         android:background="@drawable/background_square"
         android:paddingBottom="5dp"
+
         android:paddingTop="5dp">
 
         <com.arges.sepan.argmusicplayer.Views.SquareHeightImageView
@@ -25,16 +22,7 @@
             android:layout_height="match_parent"
             app:srcCompat="@drawable/mergesoft"
             android:layout_marginEnd="5dp" />
-        <TextView
-            android:text="Now Playing"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:textFontWeight="@integer/material_motion_duration_long_2"
-        android:layout_centerHorizontal="true"
-            android:padding="5dp">
 
-        </TextView>
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAudioName"
             android:layout_width="wrap_content"
@@ -85,7 +73,6 @@
             android:layout_alignParentEnd="true"
             android:layout_toEndOf="@+id/imageViewAudio" />
     </RelativeLayout>
-    </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
         android:id="@+id/layControls"
