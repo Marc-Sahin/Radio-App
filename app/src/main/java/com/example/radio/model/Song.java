@@ -1,8 +1,5 @@
 package com.example.radio.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Song {
 
     public String avgbewertung;

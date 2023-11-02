@@ -1,6 +1,8 @@
 package com.example.radio;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,7 +13,7 @@ import com.arges.sepan.argmusicplayer.Models.ArgAudio;
 import com.arges.sepan.argmusicplayer.Models.ArgAudioList;
 import com.arges.sepan.argmusicplayer.Models.ArgNotificationOptions;
 import com.arges.sepan.argmusicplayer.PlayerViews.ArgPlayerLargeView;
-import com.arges.sepan.argmusicplayer.PlayerViews.ArgPlayerSmallView;
+
 import com.example.radio.model.Song;
 import com.example.radio.viewmodel.SongViewModel;
 
@@ -19,22 +21,25 @@ import java.util.Calendar;
 
 
 public class MainActivity extends AppCompatActivity {
-    private SongViewModel songViewModel;
-    private ArgPlayerSmallView argMusicPlayer;
-
-    private ImageView moderatorImageView;
-    private TextView moderatorNameTextView;
+    private ArgPlayerLargeView argMusicPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.single_song_item);
+        setMod(getDayTime());
+        play();
 
-        ArgPlayerLargeView argMusicPlayer = (ArgPlayerLargeView) findViewById(R.id.argmusicplayer);
+        Button switchToSecondActivity = findViewById(R.id.playlists_btn);
+        switchToSecondActivity.setOnClickListener(view -> switchActivity());
+
+    }
+private void play(){
+
+        argMusicPlayer = findViewById(R.id.argmusicplayer);
         argMusicPlayer.enableNotification(new ArgNotificationOptions(this).setProgressEnabled(true));
         argMusicPlayer.disableNextPrevButtons();
         argMusicPlayer.disableProgress();
-
 // Initialize the ViewModel
         SongViewModel songViewModel = new ViewModelProvider(this).get(SongViewModel.class);
 
@@ -42,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Observe changes to the current song
 
-        songViewModel.getLiveSongData().observe(this, song -> {
+        songViewModel.getSongListMutableLiveData().observe(this, song -> {
             if (song != null) {
                 ArgAudioList playlist = new ArgAudioList(true);
                 for (int i = 0; i < song.size(); i++) {
                     Song currentSong = song.get(i);
                     String url = currentSong.getUrl();
-                    ArgAudio audio = ArgAudio.createFromURL(currentSong.getInterpret(),"\n"+ currentSong.getTitle(), url);
+                    ArgAudio audio = ArgAudio.createFromURL(currentSong.getInterpret(), "\n" + currentSong.getTitle(), url);
                     //Define audio2, audio3, audio4 ......
                     playlist.add(audio);
 
@@ -59,14 +64,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
+    }
 
-        moderatorImageView = findViewById(R.id.moderatorImageView);
-        moderatorNameTextView = findViewById(R.id.moderatorNameTextView);
 
-        // Holen der aktuellen Tageszeit
-        Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-
+    
+    private void setMod(int hour){
+        ImageView moderatorImageView = findViewById(R.id.moderatorImageView);
+        TextView moderatorNameTextView = findViewById(R.id.moderatorNameTextView);
         // Bestimmen des passenden Moderators basierend auf der Tageszeit
         String moderatorName;
         if (hour >= 5 && hour < 12) {
@@ -80,9 +84,18 @@ public class MainActivity extends AppCompatActivity {
             moderatorName = "Sandra";
         }
         // Den Namen des Moderators in das TextView einfügen
-        moderatorNameTextView.setText("\n \n on Air: \n \n" +  moderatorName);
+        moderatorNameTextView.setText(String.format("\n \n on Air: \n \n%s", moderatorName));
 
     }
 
+    private void switchActivity() {
+        Intent switchActivityIntent = new Intent(this, PlaylistsActivity.class);
+        startActivity(switchActivityIntent);
+    }
+    private int getDayTime() {
+        // Hol aktuelle Tageszeit
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.HOUR_OF_DAY);
+    }
 }
 

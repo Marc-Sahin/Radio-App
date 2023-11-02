@@ -2,21 +2,20 @@ package com.example.radio.repository;
 
 import android.util.Log;
 
-import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.radio.model.Song;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.EventListener;
+
+
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
+
 
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
+
 
 public class SongRepository
 {
@@ -38,19 +37,16 @@ public class SongRepository
     public MutableLiveData<List<Song>> getSongListMutableLiveData() {
         Log.i("TAG", "getSongListMutableLiveData: ");
 
-        mFirestore.collectionGroup("songs").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot value) {
-                // ...
+        mFirestore.collectionGroup("songs").get().addOnSuccessListener(value -> {
+            // ...
 
-                List<Song> songList = new ArrayList<>();
-                for (QueryDocumentSnapshot doc : value) {
-                    if (doc != null) {
-                        songList.add(doc.toObject(Song.class));
-                    }
+            List<Song> songList = new ArrayList<>();
+            for (QueryDocumentSnapshot doc : value) {
+                if (doc != null) {
+                    songList.add(doc.toObject(Song.class));
                 }
-                songListMutableLiveData.postValue(songList);
             }
+            songListMutableLiveData.postValue(songList);
         });
         return songListMutableLiveData;
     }
