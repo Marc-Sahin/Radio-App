@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < song.size(); i++) {
                     Song currentSong = song.get(i);
                     String url = currentSong.getUrl();
-                    ArgAudio audio = ArgAudio.createFromURL(currentSong.getInterpret(), currentSong.getTitle(), url);
+                    ArgAudio audio = ArgAudio.createFromURL(currentSong.getInterpret(),"\n"+ currentSong.getTitle(), url);
                     //Define audio2, audio3, audio4 ......
                     playlist.add(audio);
 

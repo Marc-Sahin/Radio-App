@@ -43,7 +43,7 @@
                 android:layout_toRightOf="@id/moderatorImageView"
                 android:fontFamily="sans-serif-black"
                 android:text="Moderator Name on Air"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
 
         </LinearLayout>
 
