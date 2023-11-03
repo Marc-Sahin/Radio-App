@@ -15,7 +15,7 @@ private PlaylistDetailsAdapter playlistDetailsAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_playlists_details);
+        setContentView(R.layout.recycler_view_playlist_details);
         PlaylistDetailsViewModel playlistDetailsViewModel = new ViewModelProvider(this).get(PlaylistDetailsViewModel.class);
 
         RecyclerView playlistDetailsRecycler = findViewById(R.id.container2);

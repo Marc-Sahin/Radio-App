@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.radio.PlaylistDetailsActivity;
 import com.example.radio.R;
 import com.example.radio.model.Playlist;
-import com.example.radio.model.Song;
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.playlist_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.all_playlists_layout,parent,false);
         return new ViewHolder(view);
     }
     @Override

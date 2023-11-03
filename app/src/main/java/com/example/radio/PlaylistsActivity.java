@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.radio.adapter.PlaylistAdapter;
 import com.example.radio.viewmodel.PlaylistViewModel;
@@ -17,7 +16,7 @@ private PlaylistAdapter playlistAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_playlists);
+        setContentView(R.layout.recycler_view_playlist);
         PlaylistViewModel playlistViewModel = new ViewModelProvider(this).get(com.example.radio.viewmodel.PlaylistViewModel.class);
 
         RecyclerView playlistRecycler = findViewById(R.id.container);

@@ -26,22 +26,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.single_song_item);
+        setContentView(R.layout.main_activity_layout);
         setMod(getDayTime());
-        play();
+
 
         Button switchToSecondActivity = findViewById(R.id.playlists_btn);
         switchToSecondActivity.setOnClickListener(view -> switchActivity());
-
-    }
-private void play(){
+        ArgAudioList playlist;
+        playlist = new ArgAudioList(true);
 
         argMusicPlayer = findViewById(R.id.argmusicplayer);
         argMusicPlayer.enableNotification(new ArgNotificationOptions(this).setProgressEnabled(true));
         argMusicPlayer.disableNextPrevButtons();
         argMusicPlayer.disableProgress();
-    argMusicPlayer.setPlaylistRepeat(true);
-
+        argMusicPlayer.setPlaylistRepeat(true);
 // Initialize the ViewModel
         SongViewModel songViewModel = new ViewModelProvider(this).get(SongViewModel.class);
 
@@ -51,21 +49,21 @@ private void play(){
 
         songViewModel.getSongListMutableLiveData().observe(this, song -> {
             if (song != null) {
-                ArgAudioList playlist = new ArgAudioList(true);
                 for (int i = 0; i < song.size(); i++) {
                     Song currentSong = song.get(i);
                     String url = currentSong.getUrl();
                     ArgAudio audio = ArgAudio.createFromURL(currentSong.getInterpret(), "\n" + currentSong.getTitle(), url);
                     //Define audio2, audio3, audio4 ......
                     playlist.add(audio);
-                }            argMusicPlayer.playPlaylist(playlist);
+                }
+                argMusicPlayer.playPlaylist(playlist);
 
             }
 
 
         });
-    }
 
+    }
 
     
     private void setMod(int hour){

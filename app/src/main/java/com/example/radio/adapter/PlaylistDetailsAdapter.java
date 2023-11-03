@@ -1,7 +1,6 @@
 package com.example.radio.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.radio.PlaylistDetailsActivity;
 import com.example.radio.R;
-import com.example.radio.model.Playlist;
 import com.example.radio.model.Song;
 
 import java.util.List;
@@ -29,7 +26,7 @@ public class PlaylistDetailsAdapter extends RecyclerView.Adapter<PlaylistDetails
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.playlist_details_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.playlist_details_layout,parent,false);
         return new ViewHolder(view);
     }
     @Override
