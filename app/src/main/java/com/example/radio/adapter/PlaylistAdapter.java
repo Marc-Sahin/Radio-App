@@ -1,6 +1,7 @@
 package com.example.radio.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.radio.PlaylistDetailsActivity;
 import com.example.radio.R;
 import com.example.radio.model.Playlist;
 import com.example.radio.model.Song;
@@ -44,7 +46,7 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
         }else
             return 0;
     }
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         View view;
         TextView playlistid;
         TextView dauer;
@@ -57,6 +59,18 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
             playlistid=view.findViewById(R.id.playlistid);
             dauer= view.findViewById(R.id.dauer);
             genre=view.findViewById(R.id.genre);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Playlist playlist = playlistList.get(getAbsoluteAdapterPosition());
+
+            // Start the DetailsActivity and pass the item ID
+            Intent intent = new Intent(view.getContext(), PlaylistDetailsActivity.class);
+            intent.putExtra("playlistid", playlist.getPlaylistid());
+            view.getContext().startActivity(intent);
+
         }
     }
 }

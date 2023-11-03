@@ -40,7 +40,8 @@ private void play(){
         argMusicPlayer.enableNotification(new ArgNotificationOptions(this).setProgressEnabled(true));
         argMusicPlayer.disableNextPrevButtons();
         argMusicPlayer.disableProgress();
-        argMusicPlayer.setPlaylistRepeat(true);
+    argMusicPlayer.setPlaylistRepeat(true);
+
 // Initialize the ViewModel
         SongViewModel songViewModel = new ViewModelProvider(this).get(SongViewModel.class);
 
@@ -57,8 +58,7 @@ private void play(){
                     ArgAudio audio = ArgAudio.createFromURL(currentSong.getInterpret(), "\n" + currentSong.getTitle(), url);
                     //Define audio2, audio3, audio4 ......
                     playlist.add(audio);
-                }
-                argMusicPlayer.playPlaylist(playlist);
+                }            argMusicPlayer.playPlaylist(playlist);
 
             }
 

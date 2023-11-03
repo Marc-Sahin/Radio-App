@@ -24,8 +24,8 @@ private PlaylistAdapter playlistAdapter;
         playlistRecycler.setLayoutManager(new LinearLayoutManager(this));
         playlistRecycler.setHasFixedSize(true);
         // get blog through viewModel
-        playlistViewModel.getLivePlaylistData().observe(this, playlistList -> {
-            playlistAdapter= new PlaylistAdapter(playlistList);
+        playlistViewModel.getLivePlaylistData().observe(this, playlistist -> {
+            playlistAdapter= new PlaylistAdapter(playlistist);
             playlistRecycler.setAdapter(playlistAdapter);
             playlistAdapter.notifyDataSetChanged();
         });

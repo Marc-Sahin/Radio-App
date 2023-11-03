@@ -2,26 +2,17 @@ package com.example.radio.model;
 
 public class Song {
 
-    public String avgbewertung;
+
     public String title;
     public String interpret;
     public String album;
-    public int länge;
+    public int   länge;
 
-    public int veröffentlichung;
+    public int   veröffentlichung;
 public String url;
 
     public Song() {
 
-    }
-
-    public String getAvgbewertung() {
-
-        return avgbewertung;
-    }
-
-    public void setAvgbewertung(String avgbewertung) {
-        this.avgbewertung = avgbewertung;
     }
 
     public String getTitle() {
