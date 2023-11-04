@@ -8,6 +8,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.media3.common.MediaItem;
+import androidx.media3.common.MediaMetadata;
+import androidx.media3.common.Player;
+import androidx.media3.exoplayer.ExoPlayer;
+import androidx.media3.ui.PlayerView;
 
 import com.arges.sepan.argmusicplayer.Models.ArgAudio;
 import com.arges.sepan.argmusicplayer.Models.ArgAudioList;
@@ -32,14 +37,16 @@ public class MainActivity extends AppCompatActivity {
 
         Button switchToSecondActivity = findViewById(R.id.playlists_btn);
         switchToSecondActivity.setOnClickListener(view -> switchActivity());
-        ArgAudioList playlist;
-        playlist = new ArgAudioList(true);
+        ExoPlayer player = new ExoPlayer.Builder(this).build();
+        // Bind the player to the view.
+player.setRepeatMode(Player.REPEAT_MODE_ALL);
+        PlayerView playerView = findViewById(R.id.player);
 
-        argMusicPlayer = findViewById(R.id.argmusicplayer);
-        argMusicPlayer.enableNotification(new ArgNotificationOptions(this).setProgressEnabled(true));
-        argMusicPlayer.disableNextPrevButtons();
-        argMusicPlayer.disableProgress();
-        argMusicPlayer.setPlaylistRepeat(true);
+
+        TextView textView=findViewById(R.id.title);
+        playerView.setPlayer(player);
+
+TextView textView1=findViewById(R.id.interpret);
 // Initialize the ViewModel
         SongViewModel songViewModel = new ViewModelProvider(this).get(SongViewModel.class);
 
@@ -52,11 +59,22 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < song.size(); i++) {
                     Song currentSong = song.get(i);
                     String url = currentSong.getUrl();
-                    ArgAudio audio = ArgAudio.createFromURL(currentSong.getInterpret(), "\n" + currentSong.getTitle(), url);
-                    //Define audio2, audio3, audio4 ......
-                    playlist.add(audio);
+                    MediaMetadata mediaMetadata = new MediaMetadata.Builder()
+                            .setTitle(currentSong.getTitle())
+                            .setArtist("\n"+currentSong.getInterpret())
+                            .build();
+                    MediaItem mediaItem = new MediaItem.Builder()
+                            .setUri(url)
+                            .setMediaMetadata(mediaMetadata)
+                            .build();
+                    textView.setText(mediaMetadata.title);
+                    textView1.setText(mediaMetadata.artist);
+                    player.setMediaItem(mediaItem);
                 }
-                argMusicPlayer.playPlaylist(playlist);
+
+                player.prepare();
+// Start the playback.
+                player.play();
 
             }
 
