@@ -27,12 +27,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/moderatorImageView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:contentDescription="moderator_onair"
-            android:scaleType="centerInside" />
+            <ImageView
+                android:id="@+id/moderatorImageView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:contentDescription="@string/moderator_onair"
+                android:scaleType="centerInside" />
 
             <TextView
                 android:id="@+id/moderatorNameTextView"
@@ -42,7 +42,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_toRightOf="@id/moderatorImageView"
                 android:fontFamily="sans-serif-black"
-                android:text="Moderator Name on Air"
+                android:text="@string/moderator_onair"
                 android:textSize="25sp" />
 
         </LinearLayout>
@@ -57,7 +57,7 @@
             <com.arges.sepan.argmusicplayer.PlayerViews.ArgPlayerLargeView
                 android:id="@+id/argmusicplayer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="98dp" />
 
         </LinearLayout>
 
@@ -72,6 +72,7 @@
                 android:id="@+id/songwuenschen_btn"
                 style="@style/myRadioButtonStyle"
                 android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
                 android:text="@string/song_w_nschen"
                 android:textAllCaps="false"
                 android:textColorLink="#CB1818"

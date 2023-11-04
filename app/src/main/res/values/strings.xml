@@ -3,4 +3,16 @@
     <string name="song_w_nschen">Song wünschen</string>
     <string name="playlists">Playlists</string>
     <string name="deine_meinung">Deine Meinung</string>
+    <string name="zurueck_btn">Zurück</string>
+    <string name="playlist_msg">Wähle eine Playlist aus</string>
+    <string name="moderator_onair">Moderator on Air</string>
+    <string name="playlist_meinung">
+        <b>Deine Meinung zählt!</b>\n\n
+        Bewerte unsere aktuellen Songs von 1 (nicht so toll) bis 5 (absolut genial). Füge gerne einen
+        Kommentar hinzu, um uns zu sagen, was du magst oder was du ändern würdest. Dein Feedback ist uns wichtig!\n\n
+        Deine Bewertungen gehen direkt an die Radiostation und helfen uns, die Playlist zu verbessern.
+        Sieh unten, welche Songs die Community liebt. Deine Meinung macht den Unterschied!\n\n
+        Also, worauf wartest du noch? Lass uns wissen, wie dir die Songs gefallen – deine Meinung zählt! ❤️🎉🎶
+    >
+</string>
 </resources>
