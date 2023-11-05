@@ -2,11 +2,15 @@ package com.example.radio.repository;
 
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.radio.model.Playlist;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +36,9 @@ public class PlaylistRepository
     public MutableLiveData<List<Playlist>> getPlaylistListMutableLiveData() {
         Log.i("TAG", "getPlaylistListMutableLiveData: ");
 
-        mFirestore.collection("playlist").get().addOnSuccessListener(value -> {
+        mFirestore.collection("playlist").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
             // ...
 
             List<Playlist> PlaylistList = new ArrayList<>();
@@ -42,7 +48,7 @@ public class PlaylistRepository
                 }
             }
             PlaylistListMutableLiveData.postValue(PlaylistList);
-        });
+        }});
         return PlaylistListMutableLiveData;
     }
 
