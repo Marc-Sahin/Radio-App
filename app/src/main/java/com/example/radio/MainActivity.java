@@ -37,12 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
         Button switchToSecondActivity = findViewById(R.id.playlists_btn);
         switchToSecondActivity.setOnClickListener(view -> switchActivity());
+      // erstelle Exoplayer Instanz
         ExoPlayer player = new ExoPlayer.Builder(this).build();
-        // Bind the player to the view.
-player.setRepeatMode(Player.REPEAT_MODE_ALL);
+      // playlist wiederholen
+        player.setRepeatMode(Player.REPEAT_MODE_ALL);     
+      
+      // Bind the player to the view.
         PlayerView playerView = findViewById(R.id.player);
-
-
+    // Textview für Titel deklarieren
         TextView textView=findViewById(R.id.title);
         playerView.setPlayer(player);
 
@@ -103,7 +105,8 @@ TextView textView1=findViewById(R.id.interpret);
         moderatorNameTextView.setText(String.format("\n \n on Air: \n \n%s", moderatorName));
 
     }
-
+      
+      //Wechsel Activity
     private void switchActivity() {
         Intent switchActivityIntent = new Intent(this, PlaylistsActivity.class);
         startActivity(switchActivityIntent);
