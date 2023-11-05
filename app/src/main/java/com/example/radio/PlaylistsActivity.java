@@ -18,8 +18,8 @@ private PlaylistAdapter playlistAdapter;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_view_playlist);
         PlaylistViewModel playlistViewModel = new ViewModelProvider(this).get(com.example.radio.viewmodel.PlaylistViewModel.class);
-
         RecyclerView playlistRecycler = findViewById(R.id.container);
+
         playlistRecycler.setLayoutManager(new LinearLayoutManager(this));
         playlistRecycler.setHasFixedSize(true);
         // get blog through viewModel
