@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.media3.common.MediaItem;
 import androidx.media3.common.MediaMetadata;
 import androidx.media3.common.Player;
+import androidx.media3.common.util.Util;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.ui.PlayerView;
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
       
       // Bind the player to the view.
         PlayerView playerView = findViewById(R.id.player);
+
     // Textview für Titel deklarieren
         TextView textView=findViewById(R.id.title);
         playerView.setPlayer(player);

@@ -62,13 +62,16 @@
                 android:orientation="horizontal">
 
                 <androidx.media3.ui.PlayerView
+                    app:shutter_background_color="#261A00"
+                    android:layout_marginStart="5dp"
                     android:id="@+id/player"
-
+                    app:surface_type="none"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:layout_height="wrap_content" />
                 <RelativeLayout
                     android:layout_weight="1"
+                    android:layout_marginStart="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <TextView
@@ -84,9 +87,9 @@
                     <TextView
 
                         android:id="@+id/interpret"
+                        android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="500dp"
                         android:text="tt"
                         android:textColor="@color/theme_card_text"
                         android:textSize="25sp"
