@@ -51,10 +51,6 @@ public class PlaylistDetailsAdapter extends RecyclerView.Adapter<PlaylistDetails
         TextView title;
         TextView interpret;
         TextView album;
-
-
-
-
         private Context context;
 
         public ViewHolder(@NonNull View itemView) {

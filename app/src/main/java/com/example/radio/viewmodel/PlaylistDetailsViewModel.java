@@ -17,10 +17,6 @@ public class PlaylistDetailsViewModel extends ViewModel {
     FirebaseFirestore mFirestore;
     PlaylistDetailsRepository PlaylistDetailsRepository;
 
-
-    public MutableLiveData<List<Song>> getLivePlaylistDetailsData() {
-        return PlaylistDetailsMutableLiveData;
-    }
     public MutableLiveData<List<Song>> getPlaylistDetails(String playlistid) {
         PlaylistDetailsRepository = new PlaylistDetailsRepository();
         mFirestore = FirebaseFirestore.getInstance();
