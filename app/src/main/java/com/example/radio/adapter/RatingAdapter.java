@@ -1,27 +1,32 @@
 package com.example.radio.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.radio.model.Rating;
+
 import com.example.radio.R;
-import com.example.radio.model.Song;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.List;
 
 /**
  * Created by kunchok on 19/02/2021
  */
-public class PlaylistDetailsAdapter extends RecyclerView.Adapter<PlaylistDetailsAdapter.ViewHolder> {
-    List<Song> playlistDetails;
+public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.ViewHolder> {
+    List<Rating> ratingList;
 
-    public PlaylistDetailsAdapter(List<Song> playlistDetails){
-        this.playlistDetails = playlistDetails;
+    public RatingAdapter(List<Rating> ratingList){
+        this.ratingList = ratingList;
     }
     @NonNull
     @Override
@@ -31,38 +36,34 @@ public class PlaylistDetailsAdapter extends RecyclerView.Adapter<PlaylistDetails
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.album.setText(String.valueOf(playlistDetails.get(position).getAlbum()));
-        holder.title.setText(String.valueOf(playlistDetails.get(position).getTitle()));
+        holder.userid.setText(String.valueOf(ratingList.get(position).getUserid()));
+        holder.sterne.setText(String.valueOf(ratingList.get(position).getSterne()));
+        holder.kommentar.setText(String.valueOf(ratingList.get(position).getKommentar()));
 
-        holder.interpret.setText(String.valueOf(playlistDetails.get(position).getInterpret()));
 
     }
     @Override
     public int getItemCount() {
-        if(playlistDetails!=null){
-            return playlistDetails.size();
+        if(ratingList!=null){
+            return ratingList.size();
         }else
             return 0;
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
-       View view;
-
-        TextView title;
-        TextView interpret;
-        TextView album;
+        View view;
+        TextView kommentar;
+        TextView userid;
+        TextView sterne;
         private Context context;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             view = itemView;
-            title=view.findViewById(R.id.title);
-            interpret =view.findViewById(R.id.interpret);
-
-            album=view.findViewById(R.id.album);
+            kommentar=view.findViewById(R.id.kommentar);
+            sterne= view.findViewById(R.id.sterne);
+            userid = view.findViewById(R.id.userid);
 
         }
-
 
     }
 }
