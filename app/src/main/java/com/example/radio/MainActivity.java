@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button switchToSecondActivity = findViewById(R.id.playlists_btn);
         switchToSecondActivity.setOnClickListener(view -> switchActivity());
-
-
         ArgAudioList playlist;
         playlist = new ArgAudioList(true);
 
