@@ -2,12 +2,25 @@ package com.example.radio;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.annotation.OptIn;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.media3.common.MediaItem;
+import androidx.media3.common.MediaMetadata;
+import androidx.media3.common.Player;
+import androidx.media3.common.util.Log;
+import androidx.media3.common.util.UnstableApi;
+import androidx.media3.common.util.Util;
+import androidx.media3.exoplayer.ExoPlayer;
+import androidx.media3.ui.PlayerView;
 
 import com.arges.sepan.argmusicplayer.Models.ArgAudio;
 import com.arges.sepan.argmusicplayer.Models.ArgAudioList;
@@ -18,6 +31,8 @@ import com.example.radio.model.Song;
 import com.example.radio.viewmodel.SongViewModel;
 
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,41 +44,103 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity_layout);
         setMod(getDayTime());
 
-
         Button switchToSecondActivity = findViewById(R.id.playlists_btn);
         switchToSecondActivity.setOnClickListener(view -> switchActivity());
-        ArgAudioList playlist;
-        playlist = new ArgAudioList(true);
+      // erstelle Exoplayer Instanz
+        ExoPlayer player = new ExoPlayer.Builder(this).build();
+      // playlist wiederholen
+        player.setRepeatMode(Player.REPEAT_MODE_ALL);
+      // Bind the player to the view.
+        PlayerView playerView = findViewById(R.id.player);
 
-        argMusicPlayer = findViewById(R.id.argmusicplayer);
-        argMusicPlayer.enableNotification(new ArgNotificationOptions(this).setProgressEnabled(true));
-        argMusicPlayer.disableNextPrevButtons();
-        argMusicPlayer.disableProgress();
-        argMusicPlayer.setPlaylistRepeat(true);
-// Initialize the ViewModel
+    // Textview für Titel u. Interp. deklarieren
+        playerView.setPlayer(player);
+        TextView texttitle=findViewById(R.id.title);
+        TextView textInterpret =findViewById(R.id.interpret);
+        // Initialize the ViewModel
         SongViewModel songViewModel = new ViewModelProvider(this).get(SongViewModel.class);
 
-        // Initialize your ArgPlayerSmallView
-
-        // Observe changes to the current song
-
+        //setzt aktuellen Song
         songViewModel.getSongListMutableLiveData().observe(this, song -> {
             if (song != null) {
                 for (int i = 0; i < song.size(); i++) {
+                    //geht durch Songliste
                     Song currentSong = song.get(i);
                     String url = currentSong.getUrl();
-                    ArgAudio audio = ArgAudio.createFromURL(currentSong.getInterpret(), "\n" + currentSong.getTitle(), url);
-                    //Define audio2, audio3, audio4 ......
-                    playlist.add(audio);
+                    //setzt Metadaten für jeden Song
+                    MediaMetadata mediaMetadata = new MediaMetadata.Builder()
+                            .setTitle(currentSong.getTitle())
+                            .setArtist("\n"+currentSong.getInterpret())
+                            .build();
+                    MediaItem mediaItem = new MediaItem.Builder()
+                            .setUri(url)
+                            .setTag(mediaMetadata)
+                            .setMediaMetadata(mediaMetadata)
+                            .build();
+                    // fülle Playlist
+                    player.addMediaItem(mediaItem);
                 }
-                argMusicPlayer.playPlaylist(playlist);
-
+              // Start the playback.
+                player.prepare();
+                player.play();
+                // pausiert anfangs
+                player.pause();
             }
-
-
         });
 
+        final int[] counterValue = {0};
+        player.addListener(
+                new Player.Listener() {
+                    CountDownTimer counterTimer;
+                    @Override
+                    public void onPlayWhenReadyChanged(boolean playWhenReady, int reason) {
+
+                        if (!playWhenReady) {
+                            //Wenn player pausiert, starte counter
+                            counterTimer = new CountDownTimer(Long.MAX_VALUE, 1000) {
+                                @Override @OptIn(markerClass = UnstableApi.class)
+                                public void onTick(long millisUntilFinished) {
+                                    counterValue[0] += 1000;
+                                    Log.i("TAG", "h"+counterValue[0]);
+                                  if (counterValue[0]>=player.getDuration()-player.getCurrentPosition()){
+                                      //counter erreicht Restzeit des aktuellen Songs
+                                      Log.i("TAG", "end");
+                                      //spielt nächsten Song
+                                      player.seekToNext();
+                                      //counter wird auf null gesetzt
+                                      counterValue[0]=0;
+                                  }
+                                }
+                                @Override
+                                public void onFinish() {
+                                    // Counter finished (not applicable in this case)
+                                }
+                            }.start();
+                        }
+                        else {//player resumes
+                            //geht zur Stelle des counters im Song
+                            player.seekTo(counterValue[0]);
+                            if (counterTimer!=null){
+                                counterTimer.cancel();
+                            }
+
+                        }
+                    }
+                    // ändert Anzeige aktuellen Song
+                    @Override
+                    public void onMediaItemTransition(
+                            @Nullable MediaItem mediaItem, @Player.MediaItemTransitionReason int reason) {
+                        @Nullable MediaMetadata metadata = null;
+                        if (mediaItem != null && mediaItem.localConfiguration != null) {
+                            metadata = (MediaMetadata) mediaItem.localConfiguration.tag;
+                        }        TextView textView=findViewById(R.id.title);
+                        assert metadata != null;
+                        texttitle.setText(metadata.title);
+                        textInterpret.setText(metadata.artist);
+                    }
+                });
     }
+
 
     
     private void setMod(int hour){
@@ -85,7 +162,8 @@ public class MainActivity extends AppCompatActivity {
         moderatorNameTextView.setText(String.format("\n \n on Air: \n \n%s", moderatorName));
 
     }
-
+      
+      //Wechsel Activity
     private void switchActivity() {
         Intent switchActivityIntent = new Intent(this, PlaylistsActivity.class);
         startActivity(switchActivityIntent);

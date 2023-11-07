@@ -10,7 +10,10 @@
         android:id="@+id/scrollview_mainactivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,14 +22,6 @@
             android:padding="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/moderatorImageView"
@@ -48,65 +43,82 @@
 
             </LinearLayout>
 
-            <LinearLayout
+
+
+        <LinearLayout
+                android:id="@+id/arg_music_panel_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="100">
 
+                android:layout_height="100dp"
+                android:background="@drawable/background_square"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:orientation="horizontal">
 
-                <com.arges.sepan.argmusicplayer.PlayerViews.ArgPlayerLargeView
-                    android:id="@+id/argmusicplayer"
-                    android:layout_width="match_parent"
-                    android:layout_height="98dp" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp">
-
-                <Button
-                    android:id="@+id/songwuenschen_btn"
-                    style="@style/myRadioButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/song_w_nschen"
-                    android:textAllCaps="false"
-                    android:textColorLink="#CB1818"
-                    android:textSize="34sp" />
-
-                <Button
-                    android:id="@+id/playlists_btn"
-                    style="@style/myRadioButtonStyle"
-                    android:text="@string/playlists"
-                    android:textSize="34sp" />
-
-                <Button
-                    android:id="@+id/deineMeinung_btn"
-                    style="@style/myRadioButtonStyle"
-                    android:text="@string/deine_meinung"
-                    android:textSize="34sp" />
-
-                <com.google.android.material.card.MaterialCardView
+                <androidx.media3.ui.PlayerView
+                    app:shutter_background_color="#261A00"
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/player"
+                    app:surface_type="none"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_marginTop="30dp"
-                    android:background="@color/theme_card" />
-
-                <com.google.android.material.card.MaterialCardView
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/title"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center|center_horizontal"
-                    android:layout_marginTop="30dp"
-                    android:background="@color/theme_card" />
+                    android:layout_height="match_parent"
+                    android:textColor="@color/theme_card_text"
+                    android:textSize="25sp"
+                    android:visibility="visible"
+                    tools:visibility="visible" />
 
+                    <TextView
+
+                        android:id="@+id/interpret"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/theme_card_text"
+                        android:textSize="25sp"
+                        android:visibility="visible"
+                        tools:visibility="visible" />
+                </RelativeLayout>
             </LinearLayout>
-        </LinearLayout>
 
+            <Button
+                android:id="@+id/songwuenschen_btn"
+                style="@style/myRadioButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:text="@string/song_w_nschen"
+                android:textAllCaps="false"
+                android:textColorLink="#CB1818"
+                android:textSize="34sp" />
+
+            <Button
+                android:id="@+id/playlists_btn"
+                style="@style/myRadioButtonStyle"
+                android:text="@string/playlists"
+                android:textSize="34sp" />
+
+            <Button
+                android:id="@+id/deineMeinung_btn"
+                style="@style/myRadioButtonStyle"
+                android:text="@string/deine_meinung"
+                android:textSize="34sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="30dp"
+                android:background="@color/theme_card" />
+
+    </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
