@@ -1,11 +1,16 @@
 package com.example.radio.repository;
 
+import static androidx.media3.common.MediaLibraryInfo.TAG;
+
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.radio.model.Rating;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -50,6 +55,23 @@ public class RatingRepository
             RatingListMutableLiveData.postValue(RatingDetails);
         }});
         return RatingListMutableLiveData;
+    }
+    public void addRating(String playlistid, String userid, Rating rating) {
+        Log.i("TAG", "addRating: ");
+        mFirestore.collection("playlist").document(playlistid).collection("bewertung").document(userid).set(rating)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("TAG", "DocumentSnapshot successfully written!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("TAG", "Error writing document", e);
+                    }
+                });
+
     }
 
 }

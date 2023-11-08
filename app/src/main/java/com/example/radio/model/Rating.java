@@ -5,6 +5,15 @@ public class Rating {
     private String kommentar;
     private int sterne;
 
+    public Rating() {
+
+    }
+
+    public Rating(String userid, String kommentar, int sterne) {
+        this.userid = userid;
+        this.kommentar = kommentar;
+        this.sterne = sterne;
+    }
     public String getUserid() {
         return userid;
     }
