@@ -67,18 +67,22 @@ public class MainActivity extends AppCompatActivity {
                     //geht durch Songliste
                     Song currentSong = song.get(i);
                     String url = currentSong.getUrl();
-                    //setzt Metadaten für jeden Song
-                    MediaMetadata mediaMetadata = new MediaMetadata.Builder()
-                            .setTitle(currentSong.getTitle())
-                            .setArtist("\n"+currentSong.getInterpret())
-                            .build();
-                    MediaItem mediaItem = new MediaItem.Builder()
-                            .setUri(url)
-                            .setTag(mediaMetadata)
-                            .setMediaMetadata(mediaMetadata)
-                            .build();
-                    // fülle Playlist
-                    player.addMediaItem(mediaItem);
+                    String title = currentSong.getTitle();
+                    String interpret = currentSong.getInterpret();
+                    if (url != null & interpret != null & title != null) {
+                        //setzt Metadaten für jeden Song
+                        MediaMetadata mediaMetadata = new MediaMetadata.Builder()
+                                .setTitle(currentSong.getTitle())
+                                .setArtist("\n" + currentSong.getInterpret())
+                                .build();
+                        MediaItem mediaItem = new MediaItem.Builder()
+                                .setUri(url)
+                                .setTag(mediaMetadata)
+                                .setMediaMetadata(mediaMetadata)
+                                .build();
+                        // fülle Playlist
+                        player.addMediaItem(mediaItem);
+                    }
                 }
               // Start the playback.
                 player.prepare();

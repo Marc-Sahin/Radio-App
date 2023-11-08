@@ -33,7 +33,8 @@ public class PlaylistDetailsAdapter extends RecyclerView.Adapter<PlaylistDetails
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.album.setText(String.valueOf(playlistDetails.get(position).getAlbum()));
         holder.title.setText(String.valueOf(playlistDetails.get(position).getTitle()));
-
+        holder.veröffentlichung.setText(String.valueOf(playlistDetails.get(position).getVeröffentlichung()));
+        holder.länge.setText(String.valueOf(playlistDetails.get(position).getLänge()));
         holder.interpret.setText(String.valueOf(playlistDetails.get(position).getInterpret()));
 
     }
@@ -49,6 +50,8 @@ public class PlaylistDetailsAdapter extends RecyclerView.Adapter<PlaylistDetails
        View view;
 
         TextView title;
+        TextView länge;
+        TextView veröffentlichung;
         TextView interpret;
         TextView album;
         private Context context;
@@ -58,7 +61,8 @@ public class PlaylistDetailsAdapter extends RecyclerView.Adapter<PlaylistDetails
             view = itemView;
             title=view.findViewById(R.id.title);
             interpret =view.findViewById(R.id.interpret);
-
+            veröffentlichung = view.findViewById(R.id.veröffentlichung);
+            länge = view.findViewById(R.id.länge);
             album=view.findViewById(R.id.album);
 
         }

@@ -27,9 +27,11 @@ public class PlaylistsActivity extends AppCompatActivity {
         playlistRecycler.setHasFixedSize(true);
         // get blog through viewModel
         playlistViewModel.getLivePlaylistData().observe(this, playlistist -> {
-            playlistAdapter = new PlaylistAdapter(playlistist);
-            playlistRecycler.setAdapter(playlistAdapter);
-            playlistAdapter.notifyDataSetChanged();
+            if (playlistist != null && !playlistist.isEmpty()){
+                playlistAdapter = new PlaylistAdapter(playlistist);
+                playlistRecycler.setAdapter(playlistAdapter);
+                playlistAdapter.notifyDataSetChanged();
+            }
         });
 
     }

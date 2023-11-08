@@ -42,19 +42,22 @@ public class PlaylistDetailsActivity extends AppCompatActivity {
         String itemId = intent.getStringExtra("playlistid");
         // get songs through viewModel
         playlistDetailsViewModel.getPlaylistDetails(itemId).observe(this, playlistDetailsList -> {
-            playlistDetailsAdapter = new PlaylistDetailsAdapter(playlistDetailsList);
-            playlistDetailsRecycler.setAdapter(playlistDetailsAdapter);
-            playlistDetailsAdapter.notifyDataSetChanged();
-
+            if (playlistDetailsList != null && !playlistDetailsList.isEmpty())
+            {
+                playlistDetailsAdapter = new PlaylistDetailsAdapter(playlistDetailsList);
+                playlistDetailsRecycler.setAdapter(playlistDetailsAdapter);
+                playlistDetailsAdapter.notifyDataSetChanged();
+            }
 
         });
 
 
         ratingViewModel.getRatingListMutableLiveData(itemId).observe(this, ratingList -> {
-            ratingAdapter = new RatingAdapter(ratingList);
-            ratingrecycler.setAdapter(ratingAdapter);
-           ratingAdapter.notifyDataSetChanged();
-
+            if (ratingList!= null && !ratingList.isEmpty()) {
+                ratingAdapter = new RatingAdapter(ratingList);
+                ratingrecycler.setAdapter(ratingAdapter);
+                ratingAdapter.notifyDataSetChanged();
+            }
         });
 
 
