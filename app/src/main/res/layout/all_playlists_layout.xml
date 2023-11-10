@@ -3,47 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/playlist_activity_frame"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout
-    android:background="#FFC400"
-    android:orientation="vertical" android:layout_height="match_parent"
-    android:layout_width="match_parent">
-
-    <TextView
-        android:id="@+id/playlist_start"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/playlist_msg"
-        android:textStyle="bold" />
-
-
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/playlist_start">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:background="#FFAB00">
 
 
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFAB00"
-                android:orientation="vertical"
-                android:padding="5dp">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFAB00"
-                    android:orientation="vertical"
-                    android:padding="5dp">
 
                     <TextView
                         android:id="@+id/playlistid"
@@ -65,25 +44,6 @@
                         android:text="TextView"
                         android:textSize="18sp" />
                 </LinearLayout>
-        </LinearLayout>
+            </LinearLayout>
 
-
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/deine_meinung_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/playlist_meinung"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-            android:textIsSelectable="false"
-            android:textSize="16sp" />
-    </ScrollView>
-</LinearLayout>
-</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
