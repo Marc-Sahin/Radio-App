@@ -1,6 +1,7 @@
 package com.example.radio;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -9,9 +10,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.OptIn;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.media3.common.MediaItem;
 import androidx.media3.common.MediaMetadata;
@@ -37,24 +40,29 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     private ArgPlayerLargeView argMusicPlayer;
-
+    @OptIn(markerClass = UnstableApi.class)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void  onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity_layout);
         setMod(getDayTime());
 
         Button switchToSecondActivity = findViewById(R.id.playlists_btn);
         switchToSecondActivity.setOnClickListener(view -> switchActivity());
+
       // erstelle Exoplayer Instanz
         ExoPlayer player = new ExoPlayer.Builder(this).build();
       // playlist wiederholen
         player.setRepeatMode(Player.REPEAT_MODE_ALL);
       // Bind the player to the view.
         PlayerView playerView = findViewById(R.id.player);
-
+        // Zeige playback controls dauerhaft
+        playerView.setControllerShowTimeoutMs(-1);
     // Textview für Titel u. Interp. deklarieren
         playerView.setPlayer(player);
+
+
+                playerView.setDefaultArtwork(AppCompatResources.getDrawable(this,R.drawable.background_square));
         TextView texttitle=findViewById(R.id.title);
         TextView textInterpret =findViewById(R.id.interpret);
         // Initialize the ViewModel
@@ -125,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                             //geht zur Stelle des counters im Song
                             player.seekTo(counterValue[0]);
                             if (counterTimer!=null){
+
                                 counterTimer.cancel();
                             }
 
@@ -137,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                         @Nullable MediaMetadata metadata = null;
                         if (mediaItem != null && mediaItem.localConfiguration != null) {
                             metadata = (MediaMetadata) mediaItem.localConfiguration.tag;
-                        }        TextView textView=findViewById(R.id.title);
+                        }
                         assert metadata != null;
                         texttitle.setText(metadata.title);
                         textInterpret.setText(metadata.artist);

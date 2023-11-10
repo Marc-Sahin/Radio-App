@@ -61,11 +61,11 @@
                     android:id="@+id/player"
                     app:surface_type="none"
                     android:layout_width="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     android:layout_height="wrap_content" />
                 <RelativeLayout
                     android:layout_weight="1"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <TextView
