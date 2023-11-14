@@ -40,8 +40,8 @@ dependencies {
     implementation ("androidx.media3:media3-exoplayer:1.1.1")
     implementation ("androidx.media3:media3-ui:1.1.1")
     implementation ("androidx.media3:media3-common:1.1.1")
-    //Glide
-    implementation("com.github.mergehez:ArgPlayer:v3.1")
+    implementation ("de.cketti.mailto:email-intent-builder:2.0.0")
+
     implementation ("androidx.appcompat:appcompat:1.6.1")
     implementation ("com.google.android.material:material:1.10.0")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
