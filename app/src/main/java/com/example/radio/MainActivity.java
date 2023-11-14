@@ -25,10 +25,6 @@ import androidx.media3.common.util.Util;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.ui.PlayerView;
 
-import com.arges.sepan.argmusicplayer.Models.ArgAudio;
-import com.arges.sepan.argmusicplayer.Models.ArgAudioList;
-import com.arges.sepan.argmusicplayer.Models.ArgNotificationOptions;
-import com.arges.sepan.argmusicplayer.PlayerViews.ArgPlayerLargeView;
 
 import com.example.radio.model.Song;
 import com.example.radio.viewmodel.SongViewModel;
@@ -39,7 +35,6 @@ import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity {
-    private ArgPlayerLargeView argMusicPlayer;
     @OptIn(markerClass = UnstableApi.class)
     @Override
     protected void  onCreate(Bundle savedInstanceState) {
