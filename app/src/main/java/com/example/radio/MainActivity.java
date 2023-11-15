@@ -1,16 +1,12 @@
 package com.example.radio;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Looper;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.OptIn;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +17,6 @@ import androidx.media3.common.MediaMetadata;
 import androidx.media3.common.Player;
 import androidx.media3.common.util.Log;
 import androidx.media3.common.util.UnstableApi;
-import androidx.media3.common.util.Util;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.ui.PlayerView;
 
@@ -30,8 +25,6 @@ import com.example.radio.model.Song;
 import com.example.radio.viewmodel.SongViewModel;
 
 import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -42,9 +35,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity_layout);
         setMod(getDayTime());
 
-        Button switchToSecondActivity = findViewById(R.id.playlists_btn);
-        switchToSecondActivity.setOnClickListener(view -> switchActivity());
+        Button switchToPlaylistActivityButton = findViewById(R.id.playlists_btn);
+        switchToPlaylistActivityButton.setOnClickListener(view -> switchToPlaylistActivity());
 
+        Button switchToSongwunsch= findViewById(R.id.deineMeinung_btn);
+        switchToSongwunsch.setOnClickListener(view->switchToSongwunschActivity());
       // erstelle Exoplayer Instanz
         ExoPlayer player = new ExoPlayer.Builder(this).build();
       // playlist wiederholen
@@ -172,8 +167,12 @@ public class MainActivity extends AppCompatActivity {
     }
       
       //Wechsel Activity
-    private void switchActivity() {
+    private void switchToPlaylistActivity() {
         Intent switchActivityIntent = new Intent(this, PlaylistsActivity.class);
+        startActivity(switchActivityIntent);
+    }
+    private void switchToSongwunschActivity() {
+        Intent switchActivityIntent = new Intent(this, Songwunsch.class);
         startActivity(switchActivityIntent);
     }
     private int getDayTime() {
