@@ -28,6 +28,7 @@ public class PlaylistsActivity extends AppCompatActivity {
         // get blog through viewModel
         playlistViewModel.getLivePlaylistData().observe(this, playlistist -> {
             if (playlistist != null){
+
                 playlistAdapter = new PlaylistAdapter(playlistist);
                 playlistRecycler.setAdapter(playlistAdapter);
                 playlistAdapter.notifyDataSetChanged();

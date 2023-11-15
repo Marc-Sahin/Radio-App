@@ -13,7 +13,11 @@
         Deine Bewertungen gehen direkt an die Radiostation und helfen uns, die Playlist zu verbessern.
         Sieh unten, welche Songs die Community liebt. Deine Meinung macht den Unterschied!\n\n
         Also, worauf wartest du noch? Lass uns wissen, wie dir die Songs gefallen – deine Meinung zählt! ❤️🎉🎶
-    >
+
 </string>
     <string name="bewertung_abgeben">Bewertung abgeben</string>
+    <string name="kom"><b>Kommentar</b></string>
+    <string name="heute">Heute</string>
+    <string name="gestern">Gestern</string>
+    <string name="morgen">Morgen</string>
 </resources>
