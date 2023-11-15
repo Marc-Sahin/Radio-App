@@ -14,7 +14,10 @@ import com.example.radio.PlaylistDetailsActivity;
 import com.example.radio.R;
 import com.example.radio.model.Playlist;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by kunchok on 19/02/2021
@@ -33,9 +36,22 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.playlistid.setText(playlistList.get(position).getPlaylistid());
-        holder.dauer.setText(String.valueOf(playlistList.get(position).getDauer()));
-        holder.genre.setText(playlistList.get(position).getGenre());
+            LocalDate today = LocalDate.now();
+            int now=today.getDayOfWeek().getValue();
+            int playlistday=playlistList.get(position).getTag();
+            if (playlistday==now){
+            holder.tag.setText(R.string.heute);
+            }
+            else if (playlistday<now){
+                holder.tag.setText(R.string.gestern);
+            }
+            else {
+                holder.tag.setText(R.string.morgen);
+            }
+            holder.playlistid.setText(playlistList.get(position).getPlaylistid());
+            holder.dauer.setText(String.valueOf(playlistList.get(position).getDauer()));
+            holder.genre.setText(playlistList.get(position).getGenre());
+
 
     }
     @Override
@@ -47,14 +63,18 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
     }
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         View view;
+
         TextView playlistid;
         TextView dauer;
         TextView genre;
+        TextView tag;
         private Context context;
 
         public ViewHolder(@NonNull View itemView) {
+
             super(itemView);
             view = itemView;
+            tag = view.findViewById(R.id.Tag);
             playlistid=view.findViewById(R.id.playlistid);
             dauer= view.findViewById(R.id.dauer);
             genre=view.findViewById(R.id.genre);

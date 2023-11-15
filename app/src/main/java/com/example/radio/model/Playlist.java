@@ -4,6 +4,15 @@ public class Playlist {
     private String playlistid;
     private int dauer;
     private String genre;
+    private int Tag;
+
+    public int getTag() {
+        return Tag;
+    }
+
+    public void setTag(int tag) {
+        Tag = tag;
+    }
 
     public String getPlaylistid() {
         return playlistid;

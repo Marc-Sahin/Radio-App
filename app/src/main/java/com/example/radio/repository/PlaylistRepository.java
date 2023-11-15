@@ -9,11 +9,19 @@ import com.example.radio.model.Playlist;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 public class PlaylistRepository
@@ -34,9 +42,14 @@ public class PlaylistRepository
 
     //get Playlist from firebase firestore
     public MutableLiveData<List<Playlist>> getPlaylistListMutableLiveData() {
+        LocalDate today = LocalDate.now();
+        int now=today.getDayOfWeek().getValue();
+        int gestern=now-1;
+        int morgen=now+1;
+
         Log.i("TAG", "getPlaylistListMutableLiveData: ");
 
-        mFirestore.collection("playlist").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        mFirestore.collection("playlist").whereIn("Tag", Arrays.asList(gestern, now,morgen)).orderBy("Tag", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
             // ...
