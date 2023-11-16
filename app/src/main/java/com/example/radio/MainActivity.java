@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Button switchToPlaylistActivityButton = findViewById(R.id.playlists_btn);
         switchToPlaylistActivityButton.setOnClickListener(view -> switchToPlaylistActivity());
 
-        Button switchToSongwunsch= findViewById(R.id.deineMeinung_btn);
+        Button switchToSongwunsch= findViewById(R.id.songwuenschen_btn);
         switchToSongwunsch.setOnClickListener(view->switchToSongwunschActivity());
       // erstelle Exoplayer Instanz
         ExoPlayer player = new ExoPlayer.Builder(this).build();
