@@ -24,6 +24,7 @@ import androidx.media3.ui.PlayerView;
 import com.example.radio.model.Song;
 import com.example.radio.viewmodel.SongViewModel;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 
 
@@ -63,8 +64,13 @@ public class MainActivity extends AppCompatActivity {
             if (song != null) {
                 for (int i = 0; i < song.size(); i++) {
                     //geht durch Songliste
+                    LocalDate today = LocalDate.now();
+                    int now=today.getDayOfWeek().getValue();
+
                     Song currentSong = song.get(i);
-                    String url = currentSong.getUrl();
+                    if (currentSong.getTag()-now==0) {
+
+                        String url = currentSong.getUrl();
                     String title = currentSong.getTitle();
                     String interpret = currentSong.getInterpret();
                     if (url != null & interpret != null & title != null) {
@@ -80,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                                 .build();
                         // fülle Playlist
                         player.addMediaItem(mediaItem);
+                    }
                     }
                 }
               // Start the playback.

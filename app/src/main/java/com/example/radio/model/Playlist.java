@@ -6,6 +6,9 @@ public class Playlist {
     private String genre;
     private int Tag;
 
+    public Playlist() {
+    }
+
     public int getTag() {
         return Tag;
     }

@@ -44,6 +44,12 @@
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
-
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submitWunsch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/bewertung_abgeben">
+        </com.google.android.material.button.MaterialButton>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
