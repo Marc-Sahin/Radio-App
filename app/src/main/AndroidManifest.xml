@@ -2,10 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
@@ -17,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/RadioTheme"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Songwunsch"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
@@ -31,7 +32,8 @@
         <activity
             android:name=".PlaylistsActivity"
             android:label="Playlists"
-            android:parentActivityName="com.example.radio.MainActivity" >
+            android:parentActivityName=".MainActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -39,20 +41,20 @@
         </activity>
         <activity
             android:name=".PlaylistDetailsActivity"
-
+            android:exported="true"
             android:label="Playlist"
-            android:parentActivityName="com.example.radio.PlaylistsActivity"
-            android:exported="true">
+            android:parentActivityName=".PlaylistsActivity">
             <intent-filter>
-            <action android:name="android.intent.action.SENDTO" />
-            <data android:scheme="mailto" />
-            <category android:name="android.intent.category.APP_EMAIL" />
-        </intent-filter>
+                <action android:name="android.intent.action.SENDTO" />
+
+                <data android:scheme="mailto" />
+
+                <category android:name="android.intent.category.APP_EMAIL" />
+            </intent-filter>
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.radio.PlaylistsActivity" />
-
         </activity>
     </application>
 

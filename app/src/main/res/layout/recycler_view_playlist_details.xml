@@ -73,6 +73,7 @@
 
 
             <com.google.android.material.slider.Slider
+                android:contentDescription="Slider"
                 android:id="@+id/sterneslide"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

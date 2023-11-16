@@ -7,12 +7,20 @@ public class Song {
     public String interpret;
     public String album;
     public int   länge;
+    public String url;
 
     public int   veröffentlichung;
-public String url;
-
+    public int tag;
     public Song() {
 
+    }
+
+    public int getTag() {
+        return tag;
+    }
+
+    public void setTag(int tag) {
+        this.tag = tag;
     }
 
     public String getTitle() {
