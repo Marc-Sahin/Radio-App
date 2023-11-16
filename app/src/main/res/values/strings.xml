@@ -20,4 +20,5 @@
     <string name="heute">Heute</string>
     <string name="gestern">Gestern</string>
     <string name="morgen">Morgen</string>
+    <string name="songwunsch_abgeben">Songwunsch abgeben</string>
 </resources>

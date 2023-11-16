@@ -52,7 +52,7 @@ public class Songwunsch extends AppCompatActivity {
         String kom="Songwunsch";
         EmailIntentBuilder.from(this)
                 .to("ccc.reitner@gmx.de")
-                .subject("Neue Playlist Bewertung")
+                .subject("Neuer Songwunsch")
                 .body(String.valueOf((HtmlCompat.fromHtml(nameValue +"<br><br+"+kom+"<br>"+ songwunsch,HtmlCompat.FROM_HTML_MODE_LEGACY))))
                 .start();
     }
