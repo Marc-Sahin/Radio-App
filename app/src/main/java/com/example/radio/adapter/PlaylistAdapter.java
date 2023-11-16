@@ -48,9 +48,7 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
             else {
                 holder.tag.setText(R.string.morgen);
             }
-            holder.playlistid.setText(playlistList.get(position).getPlaylistid());
-            holder.dauer.setText(String.valueOf(playlistList.get(position).getDauer()));
-            holder.genre.setText(playlistList.get(position).getGenre());
+
 
 
     }
@@ -75,9 +73,6 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
             super(itemView);
             view = itemView;
             tag = view.findViewById(R.id.Tag);
-            playlistid=view.findViewById(R.id.playlistid);
-            dauer= view.findViewById(R.id.dauer);
-            genre=view.findViewById(R.id.genre);
             view.setOnClickListener(this);
         }
 
