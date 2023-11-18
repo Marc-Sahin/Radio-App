@@ -110,10 +110,9 @@ public class MainActivity extends AppCompatActivity {
                                 @Override @OptIn(markerClass = UnstableApi.class)
                                 public void onTick(long millisUntilFinished) {
                                     counterValue[0] += 1000;
-                                    Log.i("TAG", "h"+counterValue[0]);
+
                                   if (counterValue[0]>=player.getDuration()-player.getCurrentPosition()){
                                       //counter erreicht Restzeit des aktuellen Songs
-                                      Log.i("TAG", "end");
                                       //spielt nächsten Song
                                       player.seekToNext();
                                       //counter wird auf null gesetzt
@@ -152,27 +151,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    
+
     private void setMod(int hour){
         ImageView moderatorImageView = findViewById(R.id.moderatorImageView);
         TextView moderatorNameTextView = findViewById(R.id.moderatorNameTextView);
         // Bestimmen des passenden Moderators basierend auf der Tageszeit
         String moderatorName;
         if (hour >= 5 && hour < 12) {
-            moderatorImageView.setImageResource(R.drawable.marc);
+
             moderatorName = "Marc";
         } else if (hour >= 12 && hour < 18) {
-            moderatorImageView.setImageResource(R.drawable.glademir);
+
             moderatorName = "Glademir";
         } else {
-            moderatorImageView.setImageResource(R.drawable.sandra);
+
             moderatorName = "Sandra";
         }
         // Den Namen des Moderators in das TextView einfügen
         moderatorNameTextView.setText(String.format("\n \n on Air: \n \n%s", moderatorName));
 
     }
-      
+
       //Wechsel Activity
     private void switchToPlaylistActivity() {
         Intent switchActivityIntent = new Intent(this, PlaylistsActivity.class);

@@ -45,9 +45,9 @@ public class SongRepository
         Log.i("TAG", "getSongListMutableLiveData: ");
         LocalDate today = LocalDate.now();
         int now=today.getDayOfWeek().getValue();
-        mFirestore.collectionGroup("songs").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        mFirestore.collectionGroup("songs").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(QuerySnapshot value) {
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 List<Song> songList = new ArrayList<>();
                 for (QueryDocumentSnapshot doc : value) {
                     if (doc != null) {
