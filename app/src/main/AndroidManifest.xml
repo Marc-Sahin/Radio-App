@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:windowSoftInputMode="stateHidden|adjustResize"
+        android:imeOptions="flagNoFullscreen"
         android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -42,6 +42,7 @@
                 android:value="com.example.radio.MainActivity" />
         </activity>
         <activity
+
             android:name=".PlaylistDetailsActivity"
             android:exported="true"
             android:label="Playlist"

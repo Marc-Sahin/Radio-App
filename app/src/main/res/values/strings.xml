@@ -22,4 +22,8 @@
     <string name="morgen">Morgen</string>
     <string name="songwunsch_abgeben">Songwunsch abgeben</string>
     <string name="text_label">Bewertung erfolgreich gesendet</string>
+    <string name="name">Name</string>
+    <string name="bewertung">Bewertung</string>
+    <string name="kommentar_optional">Kommentar (optional)</string>
+    <string name="slider">Slider</string>
 </resources>

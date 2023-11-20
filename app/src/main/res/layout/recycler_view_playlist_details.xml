@@ -5,11 +5,8 @@
     android:id="@+id/rootPlaylistdetails"
     android:layout_height="match_parent"
     tools:context=".PlaylistDetailsActivity">
-    <RelativeLayout
+    <LinearLayout
     android:padding="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="3"
@@ -25,13 +22,13 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:isScrollContainer="true"  >
 
         <LinearLayout
             android:id="@+id/t"
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/container2"
             android:orientation="vertical">
 
@@ -43,22 +40,24 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Bewertung">
+                android:text="@string/bewertung">
 
             </TextView>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center"
-                android:hint="Name">
+                android:maxWidth="50dp"
+                android:hint="@string/name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/name"
                     android:inputType="textPersonName"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
+                    android:minWidth="250dp"
+                    android:maxWidth="300dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
                     android:gravity="center">
 
                 </com.google.android.material.textfield.TextInputEditText>
@@ -66,48 +65,51 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="text|textMultiLine"
                 android:scrollbars="vertical"
                 android:overScrollMode="always"
                 android:scrollbarStyle="insideInset"
 
-                android:layout_marginHorizontal="20dp"
                 android:gravity="center"
-                android:hint="Kommentar (optional)">
+                android:hint="@string/kommentar_optional">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/kommentarText"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
+                    android:minWidth="300dp"
+                    android:maxWidth="800dp"
                     android:layout_height="wrap_content"
                     android:gravity="center">
 
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
+<LinearLayout
+    android:layout_width="wrap_content"
 
+    android:layout_height="wrap_content">
 
             <com.google.android.material.slider.Slider
-                android:contentDescription="Slider"
+                android:contentDescription="@string/slider"
                 android:id="@+id/sterneslide"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:stepSize="1"
                 android:valueFrom="0"
-                android:valueTo="5" />
-        </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+                android:valueTo="5" />
+    </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/submitRating"
                 android:layout_width="wrap_content"
-
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/bewertung_abgeben">
@@ -115,14 +117,14 @@
         <!-- Bewertung Ende -->
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_below="@+id/t"
             android:layout_weight="1"
             android:layout_marginTop="50dp"
+            android:foregroundGravity="center"
+            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/containerRating">
 
         </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
-    </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
