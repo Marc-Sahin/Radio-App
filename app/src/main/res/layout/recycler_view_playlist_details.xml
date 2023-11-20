@@ -2,27 +2,36 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/rootPlaylistdetails"
     android:layout_height="match_parent"
     tools:context=".PlaylistDetailsActivity">
     <RelativeLayout
     android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="3"
+    android:orientation="vertical">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/container2"
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="false"
-            android:layout_centerVertical="false"
             android:foregroundGravity="center_horizontal">
 
         </androidx.recyclerview.widget.RecyclerView>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="true"  >
 
         <LinearLayout
             android:id="@+id/t"
+            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@id/container2"
             android:orientation="vertical">
 
@@ -46,6 +55,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/name"
+                    android:inputType="textPersonName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
@@ -57,14 +67,19 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text|textMultiLine"
+                android:scrollbars="vertical"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+
+                android:layout_marginHorizontal="20dp"
                 android:gravity="center"
-                android:hint="Kommentar">
+                android:hint="Kommentar (optional)">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/kommentarText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
                     android:gravity="center">
 
                 </com.google.android.material.textfield.TextInputEditText>
@@ -78,28 +93,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:stepSize="1"
                 android:valueFrom="0"
                 android:valueTo="5" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/submitRating"
                 android:layout_width="wrap_content"
+
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/bewertung_abgeben">
             </com.google.android.material.button.MaterialButton>
-        </LinearLayout>
         <!-- Bewertung Ende -->
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_below="@+id/t"
+            android:layout_weight="1"
             android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/containerRating">
 
         </androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

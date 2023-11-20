@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:windowSoftInputMode="stateHidden|adjustResize"
+        android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

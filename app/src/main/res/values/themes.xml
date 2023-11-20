@@ -4,4 +4,5 @@
         <item name="colorPrimary">@color/theme_bar</item>
 
     </style>
+
 </resources>

@@ -7,10 +7,8 @@
         <item name="android:textColor">#050505</item>
     </style>
 
-    <style name="ExoStyledControls.Button.Center.PlayPause" tools:override="true">
+    <style name="Widget.MaterialComponents.Snackbar.TextView" parent="Widget.AppCompat.TextView">
 
-        <item name="android:src" tools:override="true" tools:ignore="PrivateResource">@drawable/exo_icon_pause</item>
-        <item name="android:contentDescription">@string/exo_controls_play_description</item>
-        <item name="android:padding">@dimen/exo_icon_padding</item>
+        <item name="android:textAlignment" tools:ignore="NewApi">center</item>
     </style>
 </resources>

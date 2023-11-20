@@ -41,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
         Button switchToSongwunsch= findViewById(R.id.songwuenschen_btn);
         switchToSongwunsch.setOnClickListener(view->switchToSongwunschActivity());
+
+        // Wechsel zu MeinungActivity
+        Button switchToMeinung = findViewById(R.id.deineMeinung_btn);
+        switchToMeinung.setOnClickListener(view->switchToMeinung());
+
       // erstelle Exoplayer Instanz
         ExoPlayer player = new ExoPlayer.Builder(this).build();
       // playlist wiederholen
@@ -51,9 +56,10 @@ public class MainActivity extends AppCompatActivity {
         playerView.setControllerShowTimeoutMs(-1);
     // Textview für Titel u. Interp. deklarieren
         playerView.setPlayer(player);
+    //Hintergrund
+        playerView.setDefaultArtwork(AppCompatResources.getDrawable(this,R.drawable.background_square));
 
-
-                playerView.setDefaultArtwork(AppCompatResources.getDrawable(this,R.drawable.background_square));
+        //Aktueller Song Textview deklarieren
         TextView texttitle=findViewById(R.id.title);
         TextView textInterpret =findViewById(R.id.interpret);
         // Initialize the ViewModel
@@ -90,13 +96,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
               // Start the playback.
-                player.prepare();
-                player.play();
-                // pausiert anfangs
-                player.pause();
+
             }
         });
-
+        player.prepare();
+        player.play();
+        // pausiert anfangs
+        player.pause();
         final int[] counterValue = {0};
         player.addListener(
                 new Player.Listener() {
@@ -181,6 +187,12 @@ public class MainActivity extends AppCompatActivity {
         Intent switchActivityIntent = new Intent(this, Songwunsch.class);
         startActivity(switchActivityIntent);
     }
+
+    private void switchToMeinung() {
+        Intent switchActivityIntent = new Intent(this, MeinungActivity.class);
+        startActivity(switchActivityIntent);
+    }
+
     private int getDayTime() {
         // Hol aktuelle Tageszeit
         Calendar calendar = Calendar.getInstance();
