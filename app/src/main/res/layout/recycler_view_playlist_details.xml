@@ -1,130 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/rootPlaylistdetails"
-    android:layout_height="match_parent"
-    tools:context=".PlaylistDetailsActivity">
-    <LinearLayout
-    android:padding="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="3"
-    android:orientation="vertical">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/container2"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:foregroundGravity="center_horizontal">
 
-        </androidx.recyclerview.widget.RecyclerView>
-    <androidx.core.widget.NestedScrollView
+    tools:context=".PlaylistDetailsActivity"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/container2"
         android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="28dp"
+        android:foregroundGravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/bewertung"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="222dp"
+        tools:layout_conversion_absoluteWidth="653dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <!-- Bewertung hinzufügen  -->
+
+    <TextView
+        android:id="@+id/bewertung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="@string/bewertung"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="19dp"
+        tools:layout_conversion_absoluteWidth="653dp">
+
+    </TextView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:hint="@string/name"
+        android:maxWidth="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="61dp"
+        tools:layout_conversion_absoluteWidth="653dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:maxWidth="300dp"
+            android:minWidth="250dp"
+            tools:layout_conversion_absoluteHeight="56dp"
+            tools:layout_conversion_absoluteWidth="250dp"
+            tools:layout_editor_absoluteX="211dp"
+            tools:layout_editor_absoluteY="256dp">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+
+        android:gravity="center"
+        android:hint="@string/kommentar_optional"
+        android:inputType="text|textMultiLine"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/sterneslide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="61dp"
+        tools:layout_conversion_absoluteWidth="653dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/kommentarText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="text|textMultiLine"
+            android:maxWidth="800dp"
+            android:minWidth="300dp"
+            tools:layout_conversion_absoluteHeight="56dp"
+            tools:layout_conversion_absoluteWidth="300dp"
+            tools:layout_editor_absoluteX="184dp"
+            tools:layout_editor_absoluteY="318dp">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Bewertung Ende -->
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/sterneslide"
+        android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
 
-        android:isScrollContainer="true"  >
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:contentDescription="@string/slider"
+        android:gravity="center"
+        android:stepSize="1"
+        android:valueFrom="0"
+        android:valueTo="5"
+        app:layout_constraintBaseline_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout4"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="1733dp" />
 
-        <LinearLayout
-            android:id="@+id/t"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/container2"
-            android:orientation="vertical">
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/submitRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/bewertung_abgeben"
+        app:layout_constraintBottom_toTopOf="@+id/containerRating"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sterneslide"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="176dp"></com.google.android.material.button.MaterialButton>
 
-        <!-- Bewertung hinzufügen  -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/containerRating"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="20dp"
+        android:foregroundGravity="center|center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="264dp"
+        tools:layout_conversion_absoluteWidth="653dp">
 
-            <TextView
-                android:id="@+id/bewertung"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/bewertung">
+    </androidx.recyclerview.widget.RecyclerView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-            </TextView>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:maxWidth="50dp"
-                android:hint="@string/name">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name"
-                    android:inputType="textPersonName"
-                    android:layout_width="wrap_content"
-                    android:minWidth="250dp"
-                    android:maxWidth="300dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
-
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="text|textMultiLine"
-                android:scrollbars="vertical"
-                android:overScrollMode="always"
-                android:scrollbarStyle="insideInset"
-
-                android:gravity="center"
-                android:hint="@string/kommentar_optional">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/kommentarText"
-                    android:layout_width="wrap_content"
-                    android:minWidth="300dp"
-                    android:maxWidth="800dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
-
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-<LinearLayout
-    android:layout_width="wrap_content"
-
-    android:layout_height="wrap_content">
-
-            <com.google.android.material.slider.Slider
-                android:contentDescription="@string/slider"
-                android:id="@+id/sterneslide"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="100dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:stepSize="1"
-                android:valueFrom="0"
-
-                android:valueTo="5" />
-    </LinearLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/submitRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/bewertung_abgeben">
-            </com.google.android.material.button.MaterialButton>
-        <!-- Bewertung Ende -->
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_weight="1"
-            android:layout_marginTop="50dp"
-            android:foregroundGravity="center"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/containerRating">
-
-        </androidx.recyclerview.widget.RecyclerView>
-</LinearLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
