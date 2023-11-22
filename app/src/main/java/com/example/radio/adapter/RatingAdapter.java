@@ -23,10 +23,11 @@ import java.util.List;
  */
 public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.ViewHolder> {
     List<Rating> ratingList;
-
-    public RatingAdapter(List<Rating> ratingList){
+    public void setItems(List<Rating> ratingList) {
         this.ratingList = ratingList;
+        notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

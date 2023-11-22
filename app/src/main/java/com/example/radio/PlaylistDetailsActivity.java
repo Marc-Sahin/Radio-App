@@ -2,6 +2,8 @@ package com.example.radio;
 
 import static android.app.PendingIntent.getActivity;
 
+import static java.security.AccessController.getContext;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,17 +12,21 @@ import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.radio.adapter.PlaylistDetailsAdapter;
 import com.example.radio.adapter.RatingAdapter;
 import com.example.radio.model.Rating;
+import com.example.radio.model.Song;
 import com.example.radio.viewmodel.PlaylistDetailsViewModel;
 import com.example.radio.viewmodel.RatingViewModel;
 import com.google.android.material.button.MaterialButton;
@@ -28,6 +34,7 @@ import com.google.android.material.slider.Slider;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.Executors;
 
@@ -48,7 +55,7 @@ public class PlaylistDetailsActivity extends AppCompatActivity {
     private PlaylistDetailsAdapter playlistDetailsAdapter;
     private RatingAdapter ratingAdapter;
 
-
+private     ViewPager2 viewPager2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,11 +67,11 @@ public class PlaylistDetailsActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         RatingViewModel ratingViewModel = new ViewModelProvider(this).get(RatingViewModel.class);
-        RecyclerView ratingrecycler = findViewById(R.id.containerRating);
-        ratingrecycler.setLayoutManager(new LinearLayoutManager(this));
-        ratingrecycler.setHasFixedSize(true);
+        viewPager2 = findViewById(R.id.viewPager);
 
-
+        viewPager2.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
+        ratingAdapter=new RatingAdapter();
+viewPager2.setAdapter(ratingAdapter);
         Intent intent = getIntent();
         String itemId = intent.getStringExtra("playlistid");
         // get songs through viewModel
@@ -77,14 +84,16 @@ public class PlaylistDetailsActivity extends AppCompatActivity {
 
         });
 
+        ratingViewModel.getRatingListMutableLiveData(itemId).observe(this, new Observer<List<Rating>>() {
 
-        ratingViewModel.getRatingListMutableLiveData(itemId).observe(this, ratingList -> {
-            if (ratingList != null && !ratingList.isEmpty()) {
-                ratingAdapter = new RatingAdapter(ratingList);
-                ratingrecycler.setAdapter(ratingAdapter);
-                ratingAdapter.notifyDataSetChanged();
-            }
-        });
+            @Override
+            public void onChanged(List<Rating> ratings) {
+                ratingAdapter.setItems(ratings);
+                setViewPagerHeight();
+
+
+            }});
+
         Slider slider = findViewById(R.id.sterneslide);
         TextInputEditText textInputEditText = findViewById(R.id.kommentarText);
         TextInputEditText nameText = findViewById(R.id.name);
@@ -132,6 +141,20 @@ public class PlaylistDetailsActivity extends AppCompatActivity {
             }
 
 
+    private void setViewPagerHeight() {
+        View firstItemView = viewPager2.getChildAt(0);
+        if (firstItemView != null) {
+            firstItemView.post(new Runnable() {
+                @Override
+                public void run() {
+                    int height = firstItemView.getHeight();
+                    ViewGroup.LayoutParams layoutParams = viewPager2.getLayoutParams();
+                    layoutParams.height = height;
+                    viewPager2.setLayoutParams(layoutParams);
+
+                }
+            });}
+    }
     public void send(String nameValue, String kommentarValue, int sternValue) {
         Executors.newSingleThreadExecutor().execute(() -> {
             // todo: background tasks
