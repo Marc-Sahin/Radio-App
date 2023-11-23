@@ -7,7 +7,7 @@
     android:id="@+id/rootPlaylistdetails"
 android:fillViewport="true"
     tools:context=".PlaylistDetailsActivity"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,15 +17,13 @@ android:fillViewport="true"
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/container2"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="28dp"
+            android:layout_height="250dp"
             android:foregroundGravity="center_horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/bewertung"
+            app:layout_constraintBottom_toTopOf="@id/bewertung"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_conversion_absoluteHeight="222dp"
+            app:layout_constraintVertical_bias="0.0"
             tools:layout_conversion_absoluteWidth="653dp">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -33,16 +31,17 @@ android:fillViewport="true"
 
         <!-- Bewertung hinzufügen  -->
 
+
         <TextView
             android:id="@+id/bewertung"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:text="@string/bewertung"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container2"
             tools:layout_conversion_absoluteHeight="19dp"
             tools:layout_conversion_absoluteWidth="653dp">
 
@@ -52,14 +51,14 @@ android:fillViewport="true"
             android:id="@+id/textInputLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
             android:hint="@string/name"
             android:maxWidth="50dp"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_conversion_absoluteHeight="61dp"
+            app:layout_constraintTop_toBottomOf="@id/bewertung"
             tools:layout_conversion_absoluteWidth="653dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -78,23 +77,22 @@ android:fillViewport="true"
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Bewertung Ende -->
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-
+            android:layout_marginTop="16dp"
             android:gravity="center"
             android:hint="@string/kommentar_optional"
             android:inputType="text|textMultiLine"
             android:overScrollMode="always"
             android:scrollbarStyle="insideInset"
             android:scrollbars="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/sterneslide"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout3"
             tools:layout_conversion_absoluteHeight="61dp"
             tools:layout_conversion_absoluteWidth="653dp">
 
@@ -113,8 +111,6 @@ android:fillViewport="true"
 
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Bewertung Ende -->
 
         <com.google.android.material.slider.Slider
             android:id="@+id/sterneslide"
@@ -140,23 +136,29 @@ android:fillViewport="true"
             android:id="@+id/submitRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="32dp"
             android:text="@string/bewertung_abgeben"
             app:layout_constraintBottom_toTopOf="@+id/viewPager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sterneslide"
+            app:layout_constraintVertical_bias="0.106"
             tools:layout_conversion_absoluteHeight="48dp"
-            tools:layout_conversion_absoluteWidth="176dp"/>
+            tools:layout_conversion_absoluteWidth="176dp" />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:orientation="horizontal"
             android:layout_height="wrap_content"
+
+            android:background="#8888"
             android:foregroundGravity="center|center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintBaseline_toBottomOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/submitRating"
             tools:layout_conversion_absoluteWidth="653dp">
 
         </androidx.viewpager2.widget.ViewPager2>

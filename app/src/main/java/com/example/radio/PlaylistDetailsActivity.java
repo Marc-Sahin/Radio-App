@@ -69,9 +69,11 @@ private     ViewPager2 viewPager2;
         RatingViewModel ratingViewModel = new ViewModelProvider(this).get(RatingViewModel.class);
         viewPager2 = findViewById(R.id.viewPager);
 
-        viewPager2.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
+        viewPager2.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         ratingAdapter=new RatingAdapter();
 viewPager2.setAdapter(ratingAdapter);
+
+
         Intent intent = getIntent();
         String itemId = intent.getStringExtra("playlistid");
         // get songs through viewModel
@@ -89,10 +91,10 @@ viewPager2.setAdapter(ratingAdapter);
             @Override
             public void onChanged(List<Rating> ratings) {
                 ratingAdapter.setItems(ratings);
-                setViewPagerHeight();
 
 
-            }});
+
+            } });
 
         Slider slider = findViewById(R.id.sterneslide);
         TextInputEditText textInputEditText = findViewById(R.id.kommentarText);
@@ -141,20 +143,7 @@ viewPager2.setAdapter(ratingAdapter);
             }
 
 
-    private void setViewPagerHeight() {
-        View firstItemView = viewPager2.getChildAt(0);
-        if (firstItemView != null) {
-            firstItemView.post(new Runnable() {
-                @Override
-                public void run() {
-                    int height = firstItemView.getHeight();
-                    ViewGroup.LayoutParams layoutParams = viewPager2.getLayoutParams();
-                    layoutParams.height = height;
-                    viewPager2.setLayoutParams(layoutParams);
 
-                }
-            });}
-    }
     public void send(String nameValue, String kommentarValue, int sternValue) {
         Executors.newSingleThreadExecutor().execute(() -> {
             // todo: background tasks
