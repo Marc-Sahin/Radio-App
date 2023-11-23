@@ -129,6 +129,8 @@ viewPager2.setAdapter(ratingAdapter);
 
                                 Rating rating = new Rating(nameValue, kommentarValue, sternValue);
                                 ratingViewModel.saveRating(itemId, nameValue, rating);
+                                Snackbar.make(findViewById(R.id.rootPlaylistdetails), R.string.text_label, Snackbar.LENGTH_SHORT)
+                                        .show();
 
 
 
