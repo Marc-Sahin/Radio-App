@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -96,7 +97,7 @@ viewPager2.setAdapter(ratingAdapter);
 
             } });
 
-        Slider slider = findViewById(R.id.sterneslide);
+         RatingBar slider = findViewById(R.id.sterneslide);
         TextInputEditText textInputEditText = findViewById(R.id.kommentarText);
         TextInputEditText nameText = findViewById(R.id.name);
         // listen für das Auslösen von Bewertung abgeben.
@@ -108,7 +109,7 @@ viewPager2.setAdapter(ratingAdapter);
             public void onClick(View v) {
 
                             String kommentarValue = String.valueOf(textInputEditText.getText());
-                            int sternValue = (int) slider.getValue();
+                            int sternValue = (int) slider.getRating();
                             String nameValue = String.valueOf(nameText.getText());
                             if (!nameValue.equals("")) {
                                 builder.setTitle("Moderator benachrichtigen?");
