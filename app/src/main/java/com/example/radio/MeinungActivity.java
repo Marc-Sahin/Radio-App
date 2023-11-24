@@ -1,12 +1,19 @@
 package com.example.radio;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.RatingBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
 
+import com.example.radio.model.Moderator;
+import com.example.radio.model.ModeratorBewertung;
+import com.example.radio.model.Rating;
+import com.example.radio.repository.ModBewertungRepository;
+import com.example.radio.repository.ModeratorRepository;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Properties;
@@ -32,31 +39,27 @@ public class MeinungActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_songwunsch);
-        TextInputEditText wunsch=findViewById(R.id.SongwunschText);
+        setContentView(R.layout.deine_meinung);
         TextInputEditText nameText = findViewById(R.id.name);
-        Button button = findViewById(R.id.submitWunsch);
-
+        RatingBar slider = findViewById(R.id.sterneslide);
+        TextInputEditText textInputEditText = findViewById(R.id.kommentarText);
+        Button button = findViewById(R.id.submitRating);
+        Intent intent=new Intent();
+        String mod=intent.getStringExtra("mod");
         button.setOnClickListener(view->{
-
-                String SongwunschValue = String.valueOf(wunsch.getText());
+                String kommval=String.valueOf(textInputEditText.getText());
                 String nameValue = String.valueOf(nameText.getText());
-                if (!nameValue.equals("") && !SongwunschValue.equals("")) {
-                    send(nameValue, SongwunschValue);
-                    // User taps OK button.
+                int slideval = (int) slider.getRating();
+                if (!nameValue.equals("")) {
+                    ModeratorBewertung moderatorBewertung = new ModeratorBewertung(nameValue, kommval, slideval);
+                    ModBewertungRepository modBewertungRepository = new ModBewertungRepository();
+                    modBewertungRepository.addRating(mod,nameValue,moderatorBewertung);
+
                 }
 
                 });
 
 
             }
-public void send(String name, String kommentar) {
 
-        String kom="Kommentar";
-        EmailIntentBuilder.from(this)
-                .to("ccc.reitner@gmx.de")
-                .subject("Neue Playlist Bewertung")
-                .body(String.valueOf((HtmlCompat.fromHtml(kom+"<br>"+ kommentar+"von"+"name",HtmlCompat.FROM_HTML_MODE_LEGACY))))
-                .start();
-    }
 }

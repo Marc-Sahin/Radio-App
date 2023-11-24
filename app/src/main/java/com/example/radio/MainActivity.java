@@ -164,12 +164,14 @@ public class MainActivity extends AppCompatActivity {
         // Bestimmen des passenden Moderators basierend auf der Tageszeit
         String moderatorName;
         if (hour >= 5 && hour < 12) {
-
+        moderatorImageView.setImageDrawable(AppCompatResources.getDrawable(this,R.drawable.marc));
             moderatorName = "Marc";
         } else if (hour >= 12 && hour < 18) {
+            moderatorImageView.setImageDrawable(AppCompatResources.getDrawable(this,R.drawable.glademir));
 
             moderatorName = "Glademir";
         } else {
+            moderatorImageView.setImageDrawable(AppCompatResources.getDrawable(this,R.drawable.sandra));
 
             moderatorName = "Sandra";
         }
@@ -189,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void switchToMeinung() {
-        Intent switchActivityIntent = new Intent(this, MeinungActivity.class);
+        Intent switchActivityIntent = new Intent(this, mod_wahl.class);
         startActivity(switchActivityIntent);
     }
 
