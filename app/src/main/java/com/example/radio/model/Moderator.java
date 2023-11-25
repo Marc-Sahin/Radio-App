@@ -1,7 +1,9 @@
 package com.example.radio.model;
 
 public class Moderator {
-    private String name;
+    public String name;
+    public Moderator() {
+    }
 
 
     public String getName() {
@@ -11,4 +13,7 @@ public class Moderator {
     public void setName(String name) {
         this.name = name;
     }
+
+
+
 }

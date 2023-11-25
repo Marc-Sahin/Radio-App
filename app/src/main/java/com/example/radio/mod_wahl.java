@@ -18,11 +18,12 @@ public class mod_wahl extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mod_auswahl_recycler);
 
-        ModViewModel modViewModel = new ViewModelProvider(this).get(com.example.radio.viewmodel.ModViewModel.class);
+        ModViewModel modViewModel = new ViewModelProvider(this).get(ModViewModel.class);
         RecyclerView modRecycler = findViewById(R.id.container);
 
         modRecycler.setLayoutManager(new LinearLayoutManager(this));
         modRecycler.setHasFixedSize(true);
+
         // get blog through viewModel
         modViewModel.getLiveModData().observe(this, modlist -> {
             if (modlist != null){
