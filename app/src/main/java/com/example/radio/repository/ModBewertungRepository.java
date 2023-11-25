@@ -37,9 +37,9 @@ public class ModBewertungRepository
 
 
 
-    public void addRating(String moderatorName, String userid, ModeratorBewertung moderatorBewertung) {
+    public void addRating(String mod, String userid, ModeratorBewertung moderatorBewertung) {
         Log.i("TAG", "addRating: ");
-        mFirestore.collection("moderator").document(moderatorName).collection("bewertung").document(userid).set(moderatorBewertung)
+        mFirestore.collection("moderator").document(mod).collection("bewertung").document(userid).set(moderatorBewertung)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

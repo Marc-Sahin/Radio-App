@@ -1,37 +1,25 @@
 package com.example.radio;
 
-import static android.app.PendingIntent.getActivity;
-
-import static java.security.AccessController.getContext;
-
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.RatingBar;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.text.HtmlCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.example.radio.adapter.PlaylistDetailsAdapter;
 import com.example.radio.adapter.RatingAdapter;
 import com.example.radio.model.Rating;
-import com.example.radio.model.Song;
 import com.example.radio.viewmodel.PlaylistDetailsViewModel;
 import com.example.radio.viewmodel.RatingViewModel;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.slider.Slider;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -50,7 +38,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import de.cketti.mailto.EmailIntentBuilder;
+
 
 public class PlaylistDetailsActivity extends AppCompatActivity {
     private PlaylistDetailsAdapter playlistDetailsAdapter;

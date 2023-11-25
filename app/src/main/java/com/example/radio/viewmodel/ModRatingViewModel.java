@@ -17,12 +17,12 @@ import java.util.List;
  * TODO: document your custom view class.
  */
 public class ModRatingViewModel extends ViewModel {
-    MutableLiveData<List<Rating>> ratingListMutableLiveData;
+    MutableLiveData<List<ModeratorBewertung>> ratingListMutableLiveData;
     FirebaseFirestore mFirestore;
     ModBewertungRepository modBewertungRepository;
 
 
-    public MutableLiveData<List<Rating>> getRatingListMutableLiveData(String playlistid) {
+    public MutableLiveData<List<ModeratorBewertung>> getRatingListMutableLiveData(String playlistid) {
         modBewertungRepository = new ModBewertungRepository();
         mFirestore = FirebaseFirestore.getInstance();
         return ratingListMutableLiveData;
