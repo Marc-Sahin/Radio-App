@@ -57,8 +57,7 @@ public class MeinungActivity extends AppCompatActivity {
                     send(nameValue,kommval,slideval);
 
                 }
-            Snackbar.make(findViewById(R.id.meinung), R.string.text_label, Snackbar.LENGTH_SHORT)
-                    .show();
+
                 });
 
 
@@ -123,6 +122,7 @@ public class MeinungActivity extends AppCompatActivity {
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
-        });
+        });      Snackbar.make(findViewById(R.id.meinung), R.string.text_label, Snackbar.LENGTH_SHORT)
+                .show();
     }
 }
