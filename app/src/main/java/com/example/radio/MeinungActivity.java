@@ -69,7 +69,24 @@ public class MeinungActivity extends AppCompatActivity {
                     send(nameValue,kommval,slideval);
 
                 }
-
+            else {
+                    Snackbar.make(findViewById(R.id.meinung), "Bitte Name und Sterne angeben", Snackbar.LENGTH_SHORT)
+                            .setBackgroundTint(getColor(R.color.theme_error))
+                            .setTextColor(getColor(R.color.theme_onError))
+                            .show();
+                }
+            if (nameValue.equals("")){
+                Snackbar.make(findViewById(R.id.meinung), "Bitte Name angeben", Snackbar.LENGTH_SHORT)
+                        .setBackgroundTint(getColor(R.color.theme_error))
+                        .setTextColor(getColor(R.color.theme_onError))
+                        .show();
+            }
+            if (slideval==0){
+                Snackbar.make(findViewById(R.id.meinung), "Bitte Sterne angeben", Snackbar.LENGTH_SHORT)
+                        .setBackgroundTint(getColor(R.color.theme_error))
+                        .setTextColor(getColor(R.color.theme_onError))
+                        .show();
+            }
                 });
 
 

@@ -97,12 +97,14 @@ viewPager2.setAdapter(ratingAdapter);
             public void onClick(View v) {
 
                             String kommentarValue = String.valueOf(textInputEditText.getText());
-                            int sternValue = (int) slider.getRating();
+                            int sternValue=0;
+                            sternValue = (int) slider.getRating();
                             String nameValue = String.valueOf(nameText.getText());
-                            if (!nameValue.equals("")) {
+                            if (!nameValue.equals("") && !(sternValue ==0)) {
                                 builder.setTitle("Moderator benachrichtigen?");
+                                int finalSternValue = sternValue;
                                 builder.setPositiveButton("Ja", (dialog, id) -> {
-                                    send(nameValue,kommentarValue,sternValue);
+                                    send(nameValue,kommentarValue, finalSternValue);
                                     // User taps OK button.
                                 });
                                 builder.setNegativeButton("Nein", (dialog, id) -> {
@@ -119,13 +121,25 @@ viewPager2.setAdapter(ratingAdapter);
                                 ratingViewModel.saveRating(itemId, nameValue, rating);
                                 Snackbar.make(findViewById(R.id.rootPlaylistdetails), R.string.text_label, Snackbar.LENGTH_SHORT)
                                         .show();
-
-
-
-
-
                             }
-
+                            else  {
+                                Snackbar.make(findViewById(R.id.rootPlaylistdetails), "Bitte Name und Sterne angeben", Snackbar.LENGTH_SHORT)
+                                        .setBackgroundTint(getColor(R.color.theme_error))
+                                        .setTextColor(getColor(R.color.theme_onError))
+                                        .show();
+                            }
+                            if (nameValue.equals("")){
+                                Snackbar.make(findViewById(R.id.rootPlaylistdetails), "Bitte Name angeben", Snackbar.LENGTH_SHORT)
+                                        .setBackgroundTint(getColor(R.color.theme_error))
+                                        .setTextColor(getColor(R.color.theme_onError))
+                                        .show();
+                            }
+                            if (sternValue==0){
+                                Snackbar.make(findViewById(R.id.rootPlaylistdetails), "Bitte Sterne angeben", Snackbar.LENGTH_SHORT)
+                                        .setBackgroundTint(getColor(R.color.theme_error))
+                                        .setTextColor(getColor(R.color.theme_onError))
+                                        .show();
+                            }
 
                     }
                 });

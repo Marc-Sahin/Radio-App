@@ -49,10 +49,29 @@ public class Songwunsch extends AppCompatActivity {
 
             String SongwunschValue = String.valueOf(wunsch.getText());
             String nameValue = String.valueOf(nameText.getText());
-            if (!nameValue.equals("") && !SongwunschValue.equals("")) {
+            if (nameValue.equals("")) {
+                Snackbar.make(findViewById(R.id.wunsch), "Bitte Name angeben", Snackbar.LENGTH_SHORT)
+                        .setBackgroundTint(getColor(R.color.theme_error))
+                        .setTextColor(getColor(R.color.theme_onError))
+                        .show();
+            }
+            if (SongwunschValue.equals("")) {
+                Snackbar.make(findViewById(R.id.wunsch), "Bitte Wunsch angeben", Snackbar.LENGTH_SHORT)
+                        .setBackgroundTint(getColor(R.color.theme_error))
+                        .setTextColor(getColor(R.color.theme_onError))
+                        .show();
+
+            }
+            if (!nameValue.equals("") && !SongwunschValue.equals("")){
 
                 send(nameValue, SongwunschValue);
-                // User taps OK button.
+
+            }
+            else {
+                Snackbar.make(findViewById(R.id.wunsch), "Bitte Wunsch und Name angeben", Snackbar.LENGTH_SHORT)
+                        .setBackgroundTint(getColor(R.color.theme_error))
+                        .setTextColor(getColor(R.color.theme_onError))
+                        .show();
             }
 
         });
@@ -119,7 +138,7 @@ public class Songwunsch extends AppCompatActivity {
             }
         });
         // Nachricht gesendet Benachrichtigung
-        Snackbar.make(findViewById(R.id.meinung), R.string.text_label, Snackbar.LENGTH_SHORT)
+        Snackbar.make(findViewById(R.id.wunsch), R.string.text_label, Snackbar.LENGTH_SHORT)
                 .show();
     }
 }
