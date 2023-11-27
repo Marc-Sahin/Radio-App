@@ -69,7 +69,7 @@ public class ModAdapter extends RecyclerView.Adapter<ModAdapter.ViewHolder> {
         public void onClick(View v) {
             Moderator moderator = moderatorList.get(getAbsoluteAdapterPosition());
 
-            // Start the DetailsActivity and pass the item ID
+            // Start the MeinungActivity and pass the moderator name
             Intent intent = new Intent(view.getContext(), MeinungActivity.class);
             intent.putExtra("mod", moderator.getName());
             view.getContext().startActivity(intent);

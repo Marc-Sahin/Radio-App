@@ -40,20 +40,32 @@ public class MeinungActivity extends AppCompatActivity {
 
         ModRatingViewModel modRatingViewModel=new ViewModelProvider(this).get(ModRatingViewModel.class);
 
+        //Textfelder deklarieren
         TextInputEditText nameText = findViewById(R.id.name);
         RatingBar slider = findViewById(R.id.sterneslide);
         TextInputEditText textInputEditText = findViewById(R.id.kommentarText);
         Button button = findViewById(R.id.submitRating);
+
+        // Moderator von vorheriger Activity holen
         Intent intent=getIntent();
         String mod=intent.getStringExtra("mod");
+
+        //Senden Button Funktionalität
         button.setOnClickListener(view->{
+            //Daten aus Textfeld holen
                 String kommval=String.valueOf(textInputEditText.getText());
                 String nameValue = String.valueOf(nameText.getText());
-                int slideval = (int) slider.getRating();
-                if (!nameValue.equals("")) {
+                int slideval=0;
+                slideval = (int) slider.getRating();
 
+                //Wenn UserName Feld nicht leer ist.
+                if (!nameValue.equals("") && slideval!=0) {
+
+                    //Moderator Bewertung speichern
                     moderatorBewertung = new ModeratorBewertung(nameValue, kommval, slideval);
                     modRatingViewModel.saveRating(mod,nameValue,moderatorBewertung);
+
+                    // MODERATOR benachrichtigung senden
                     send(nameValue,kommval,slideval);
 
                 }
@@ -67,14 +79,14 @@ public class MeinungActivity extends AppCompatActivity {
             // todo: background tasks
 
 
-            Log.w("Tag","Done");
+            //Email Anmeldedaten initialisieren
 
             String sender = "a5c34057-14db-45ca-897e-018bdeb4b584";
             String password = "f690d8ea-137f-4963-af4f-c5761ed48f9b";
             String receiver = " cccreitner@v0ddpdsuykwjfggl3rs1ha.imitate.email";
 
             Properties properties = new Properties();
-
+        //SMTP Properties festlegen
             properties.put("mail.transport.protocol", "smtp");
             properties.put("mail.smtp.host", "smtp.imitate.email");
             properties.put("mail.smtp.port", "587");
@@ -83,34 +95,32 @@ public class MeinungActivity extends AppCompatActivity {
             properties.put("mail.smtp.user", sender);
             properties.put("mail.smtp.password", password);
             properties.put("mail.smtp.starttls.enable", "true");
-            properties.put("mail.debug", "true");
 
+    // mit Server Session authentifizieren
             Session session = Session.getInstance(properties,
                     new javax.mail.Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
                             return new PasswordAuthentication(sender, password);
                         }
                     });
-            session.setDebug(true);
+
 
 
             try {
-
+            //Nachricht zusammenbauen
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(receiver));
                 message.setRecipients(Message.RecipientType.TO,
                         InternetAddress.parse(receiver));
                 message.setSubject("Neuer Moderator Bewertung");
                 String msg = "<b>Bewertung</b><br>"+star+ " Sterne<br><br>von "+name+"<br><b>Kommentar:</b>"+kom;
-
                 MimeBodyPart mimeBodyPart = new MimeBodyPart();
                 mimeBodyPart.setContent(msg, "text/html; charset=utf-8");
-
                 Multipart multipart = new MimeMultipart();
                 multipart.addBodyPart(mimeBodyPart);
-
                 message.setContent(multipart);
 
+                //Email senden
                 Transport transport = session.getTransport("smtp");
                 transport.connect("smtp.imitate.email",
                         sender,
@@ -122,7 +132,9 @@ public class MeinungActivity extends AppCompatActivity {
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
-        });      Snackbar.make(findViewById(R.id.meinung), R.string.text_label, Snackbar.LENGTH_SHORT)
+        });
+        // Nachricht gesendet Benachrichtigung
+        Snackbar.make(findViewById(R.id.meinung), R.string.text_label, Snackbar.LENGTH_SHORT)
                 .show();
     }
 }

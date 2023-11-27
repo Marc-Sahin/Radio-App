@@ -13,6 +13,7 @@ import android.widget.Button;
 import com.example.radio.R;
 import com.example.radio.model.Rating;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Properties;
@@ -40,36 +41,37 @@ public class Songwunsch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_songwunsch);
-        TextInputEditText wunsch=findViewById(R.id.SongwunschText);
+        TextInputEditText wunsch = findViewById(R.id.SongwunschText);
         TextInputEditText nameText = findViewById(R.id.name);
         Button button = findViewById(R.id.submitWunsch);
 
-        button.setOnClickListener(view->{
+        button.setOnClickListener(view -> {
 
-                String SongwunschValue = String.valueOf(wunsch.getText());
-                String nameValue = String.valueOf(nameText.getText());
-                if (!nameValue.equals("") && !SongwunschValue.equals("")) {
-                    send(nameValue, SongwunschValue);
-                    // User taps OK button.
-                }
+            String SongwunschValue = String.valueOf(wunsch.getText());
+            String nameValue = String.valueOf(nameText.getText());
+            if (!nameValue.equals("") && !SongwunschValue.equals("")) {
 
-                });
-
-
+                send(nameValue, SongwunschValue);
+                // User taps OK button.
             }
-public void send(String name, String wunsch) {
-    Executors.newSingleThreadExecutor().execute(() -> {
-        // todo: background tasks
+
+        });
 
 
-            Log.w("Tag","Done");
+    }
+
+    public void send(String name, String wunsch) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            // todo: background tasks
+
+            //Email Anmeldedaten initialisieren
 
             String sender = "a5c34057-14db-45ca-897e-018bdeb4b584";
             String password = "f690d8ea-137f-4963-af4f-c5761ed48f9b";
             String receiver = " cccreitner@v0ddpdsuykwjfggl3rs1ha.imitate.email";
 
             Properties properties = new Properties();
-
+            //SMTP Properties festlegen
             properties.put("mail.transport.protocol", "smtp");
             properties.put("mail.smtp.host", "smtp.imitate.email");
             properties.put("mail.smtp.port", "587");
@@ -78,45 +80,46 @@ public void send(String name, String wunsch) {
             properties.put("mail.smtp.user", sender);
             properties.put("mail.smtp.password", password);
             properties.put("mail.smtp.starttls.enable", "true");
-            properties.put("mail.debug", "true");
 
+            // mit Server Session authentifizieren
             Session session = Session.getInstance(properties,
                     new javax.mail.Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
                             return new PasswordAuthentication(sender, password);
                         }
                     });
-            session.setDebug(true);
 
 
             try {
-
+                //Nachricht zusammenbauen
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(receiver));
                 message.setRecipients(Message.RecipientType.TO,
                         InternetAddress.parse(receiver));
                 message.setSubject("Neuer Songwunsch");
-                String msg = "<b>Songwunsch</b><br>"+wunsch+ "<br><br>von "+name;
+                String msg = "<b>Songwunsch</b><br>" + wunsch + "<br><br>von " + name;
 
                 MimeBodyPart mimeBodyPart = new MimeBodyPart();
                 mimeBodyPart.setContent(msg, "text/html; charset=utf-8");
-
                 Multipart multipart = new MimeMultipart();
                 multipart.addBodyPart(mimeBodyPart);
-
                 message.setContent(multipart);
 
-              Transport transport = session.getTransport("smtp");
-              transport.connect("smtp.imitate.email",
-                      sender,
-                      "f690d8ea-137f-4963-af4f-c5761ed48f9b");
-              transport.sendMessage(message, message.getAllRecipients());
+                //Email senden
+                Transport transport = session.getTransport("smtp");
+                transport.connect("smtp.imitate.email",
+                        sender,
+                        "f690d8ea-137f-4963-af4f-c5761ed48f9b");
+                transport.sendMessage(message, message.getAllRecipients());
 
-                Log.i("Tag","Done");
+                Log.i("Tag", "Done");
 
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
-});
-}
+        });
+        // Nachricht gesendet Benachrichtigung
+        Snackbar.make(findViewById(R.id.meinung), R.string.text_label, Snackbar.LENGTH_SHORT)
+                .show();
     }
+}
