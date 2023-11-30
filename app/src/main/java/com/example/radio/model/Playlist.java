@@ -4,17 +4,17 @@ public class Playlist {
     private String playlistid;
     private int dauer;
     private String genre;
-    private int Tag;
+    private int tag;
 
     public Playlist() {
     }
 
     public int getTag() {
-        return Tag;
+        return tag;
     }
 
     public void setTag(int tag) {
-        Tag = tag;
+        tag = tag;
     }
 
     public String getPlaylistid() {
