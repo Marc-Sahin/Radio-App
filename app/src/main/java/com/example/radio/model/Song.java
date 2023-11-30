@@ -3,14 +3,14 @@ package com.example.radio.model;
 public class Song {
 
 
-    public String title;
-    public String interpret;
-    public String album;
-    public int   länge;
-    public String url;
+    public String titel="";
+    public String interpret="";
+    public String album="";
+    public int   länge=0;
+    public String url="";
 
-    public int   veröffentlichung;
-    public int tag;
+    public int   veröffentlichung=0;
+    public int tag=0;
     public Song() {
 
     }
@@ -23,15 +23,16 @@ public class Song {
         this.tag = tag;
     }
 
-    public String getTitle() {
 
-        return title;
+    public String getTitel() {
+        return titel;
     }
 
-    public void setTitle(String title) {
-
-        this.title = title;
+    public void setTitel(String titel) {
+        this.titel = titel;
     }
+
+
 
     public String getInterpret() {
         return interpret;

@@ -2,9 +2,9 @@ package com.example.radio.model;
 
 public class ModeratorBewertung {
 
-    private String name;
-    private String kommentar;
-    private int sterne;
+    private String name="";
+    private String kommentar="";
+    private int sterne=1;
 
     public ModeratorBewertung(String name, String kommentar, int sterne) {
         this.name = name;

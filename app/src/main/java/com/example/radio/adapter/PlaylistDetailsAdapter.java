@@ -32,7 +32,7 @@ public class PlaylistDetailsAdapter extends RecyclerView.Adapter<PlaylistDetails
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.album.setText(String.valueOf(playlistDetails.get(position).getAlbum()));
-        holder.title.setText(String.valueOf(playlistDetails.get(position).getTitle()));
+        holder.title.setText(String.valueOf(playlistDetails.get(position).getTitel()));
         holder.veröffentlichung.setText(String.valueOf(playlistDetails.get(position).getVeröffentlichung()));
         holder.länge.setText(String.valueOf(playlistDetails.get(position).getLänge()));
         holder.interpret.setText(String.valueOf(playlistDetails.get(position).getInterpret()));

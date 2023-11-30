@@ -45,50 +45,56 @@
 
 
 
-        <LinearLayout
+        <RelativeLayout
                 android:id="@+id/arg_music_panel_layout"
                 android:layout_width="match_parent"
-
-                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_height="0dp"
                 android:background="@drawable/background_square"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
                 android:orientation="horizontal">
 
-                <androidx.media3.ui.PlayerView
-                    app:shutter_background_color="#261A00"
-                    android:layout_marginStart="5dp"
-                    android:id="@+id/player"
-                    app:surface_type="none"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1.5"
-                    android:layout_height="wrap_content" />
-                <RelativeLayout
-                    android:layout_weight="1"
-                    android:layout_marginStart="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+            <androidx.media3.ui.PlayerView
+                android:id="@+id/player"
+
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                app:shutter_background_color="#261A00"
+                app:surface_type="none" />
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_toEndOf="@id/player"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/title"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textColor="@color/theme_card_text"
                     android:textSize="25sp"
                     android:visibility="visible"
                     tools:visibility="visible" />
-
+<com.google.android.material.divider.MaterialDivider
+    android:layout_below="@id/title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:background="@color/cardview_dark_background">
+</com.google.android.material.divider.MaterialDivider>
                     <TextView
-
                         android:id="@+id/interpret"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="40dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/theme_card_text"
                         android:textSize="25sp"
                         android:visibility="visible"
                         tools:visibility="visible" />
+        </RelativeLayout>
                 </RelativeLayout>
-            </LinearLayout>
 
     <Button
         android:id="@+id/songwuenschen_btn"

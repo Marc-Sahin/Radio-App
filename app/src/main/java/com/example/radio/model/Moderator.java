@@ -1,7 +1,7 @@
 package com.example.radio.model;
 
 public class Moderator {
-    public String name;
+    public String name="";
     public Moderator() {
     }
 

@@ -1,9 +1,9 @@
 package com.example.radio.model;
 
 public class Rating {
-    private String userid;
-    private String kommentar;
-    private int sterne;
+    private String userid="";
+    private String kommentar="";
+    private int sterne=0;
 
     public Rating() {
 

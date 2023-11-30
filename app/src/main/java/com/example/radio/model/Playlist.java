@@ -1,10 +1,10 @@
 package com.example.radio.model;
 
 public class Playlist {
-    private String playlistid;
-    private int dauer;
-    private String genre;
-    private int tag;
+    private String playlistid="";
+    private int dauer=0;
+    private String genre="";
+    private int tag=0;
 
     public Playlist() {
     }
