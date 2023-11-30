@@ -74,12 +74,12 @@ public class MainActivity extends AppCompatActivity {
                     int now=today.getDayOfWeek().getValue();
 
                     Song currentSong = song.get(i);
-                    if (currentSong.getTag()-now==0) {
+                    if (currentSong.getUrl()!=null && currentSong.getInterpret()!=null && currentSong.getTitle()!=null) {
 
+                        if (currentSong.getTag()-now==0) {
                         String url = currentSong.getUrl();
-                    String title = currentSong.getTitle();
-                    String interpret = currentSong.getInterpret();
-                    if (url != null & interpret != null & title != null) {
+                        String title = currentSong.getTitle();
+                        String interpret = currentSong.getInterpret();
                         //setzt Metadaten für jeden Song
                         MediaMetadata mediaMetadata = new MediaMetadata.Builder()
                                 .setTitle(currentSong.getTitle())
