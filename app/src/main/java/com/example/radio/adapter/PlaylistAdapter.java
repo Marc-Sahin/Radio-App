@@ -2,6 +2,7 @@ package com.example.radio.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,9 +38,14 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             LocalDate today = LocalDate.now();
+
             int now=today.getDayOfWeek().getValue();
-            int playlistday=playlistList.get(position).getTag();
-            if (playlistday==now){
+        Log.i("TAG", String.valueOf(now));
+
+        int playlistday= Integer.parseInt(String.valueOf(playlistList.get(position).getTag()));
+        Log.i("TAG", String.valueOf(playlistday));
+
+        if (playlistday==now){
             holder.tag.setText(R.string.heute);
             }
             else if (playlistday<now){
@@ -62,9 +68,6 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         View view;
 
-        TextView playlistid;
-        TextView dauer;
-        TextView genre;
         TextView tag;
         private Context context;
 

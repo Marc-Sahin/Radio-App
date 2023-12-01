@@ -4,7 +4,7 @@ public class Playlist {
     private String playlistid="";
     private int dauer=0;
     private String genre="";
-    private int tag=0;
+    private int tag;
 
     public Playlist() {
     }
@@ -14,7 +14,7 @@ public class Playlist {
     }
 
     public void setTag(int tag) {
-        tag = tag;
+        this.tag = tag;
     }
 
     public String getPlaylistid() {

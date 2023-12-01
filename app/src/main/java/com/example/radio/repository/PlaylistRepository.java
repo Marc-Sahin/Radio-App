@@ -48,7 +48,7 @@ public class PlaylistRepository
         int morgen=now+1;
 
         Log.i("TAG", "getPlaylistListMutableLiveData: ");
-        mFirestore.collection("playlist").whereIn("Tag", Arrays.asList(gestern, now,morgen)).orderBy("Tag", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
+        mFirestore.collection("playlist").whereIn("tag", Arrays.asList(gestern, now,morgen)).orderBy("tag", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
             // ...

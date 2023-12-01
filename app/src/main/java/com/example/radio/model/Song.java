@@ -10,7 +10,7 @@ public class Song {
     public String url;
 
     public int   veröffentlichung=0;
-    public int tag=0;
+    public int tag;
     public Song() {
 
     }
