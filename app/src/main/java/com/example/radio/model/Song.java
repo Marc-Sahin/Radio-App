@@ -7,7 +7,7 @@ public class Song {
     public String interpret="";
     public String album="";
     public int   länge=0;
-    public String url="";
+    public String url;
 
     public int   veröffentlichung=0;
     public int tag=0;
