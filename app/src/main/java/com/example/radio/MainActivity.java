@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
                     int now=today.getDayOfWeek().getValue();
 
                     Song currentSong = song.get(i);
-                    if (currentSong.getTag()-now==0) {
 
                         String url = currentSong.getUrl();
                         String title = currentSong.getTitel();
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         // fülle Playlist
                         player.addMediaItem(mediaItem);
                     }
-                    }
+
                 }
               // Start the playback.
 
@@ -156,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
 
 
     private void setMod(int hour){

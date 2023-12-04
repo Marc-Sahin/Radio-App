@@ -21,6 +21,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -45,7 +46,7 @@ public class SongRepository
         Log.i("TAG", "getSongListMutableLiveData: ");
         LocalDate today = LocalDate.now();
         int now=today.getDayOfWeek().getValue();
-        mFirestore.collectionGroup("songs").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        mFirestore.collectionGroup("songs").whereEqualTo("tag", now).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 List<Song> songList = new ArrayList<>();

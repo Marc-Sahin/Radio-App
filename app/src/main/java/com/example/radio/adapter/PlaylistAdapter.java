@@ -38,19 +38,19 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             LocalDate today = LocalDate.now();
-
             int now=today.getDayOfWeek().getValue();
         Log.i("TAG", String.valueOf(now));
 
-        int playlistday= Integer.parseInt(String.valueOf(playlistList.get(position).getTag()));
+        int playlistday= playlistList.get(position).getTag();
         Log.i("TAG", String.valueOf(playlistday));
 
         if (playlistday==now){
             holder.tag.setText(R.string.heute);
             }
-            else if (playlistday<now){
+        else if (now-playlistday==1 || now-playlistday==-6){
                 holder.tag.setText(R.string.gestern);
             }
+
             else {
                 holder.tag.setText(R.string.morgen);
             }

@@ -44,8 +44,10 @@ public class PlaylistRepository
     public MutableLiveData<List<Playlist>> getPlaylistListMutableLiveData() {
         LocalDate today = LocalDate.now();
         int now=today.getDayOfWeek().getValue();
-        int gestern=now-1;
-        int morgen=now+1;
+        int gestern=today.minusDays(1).getDayOfWeek().getValue();
+        int morgen=today.plusDays(1).getDayOfWeek().getValue();
+
+
 
         Log.i("TAG", "getPlaylistListMutableLiveData: ");
         mFirestore.collection("playlist").whereIn("tag", Arrays.asList(gestern, now,morgen)).orderBy("tag", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
