@@ -28,7 +28,7 @@ public class mod_wahl extends AppCompatActivity {
         modViewModel.getLiveModData().observe(this, modlist -> {
             if (modlist != null){
 
-                modAdapter = new ModAdapter(modlist);
+                modAdapter = new ModAdapter(modlist,this);
                 modRecycler.setAdapter(modAdapter);
                 modAdapter.notifyDataSetChanged();
             }

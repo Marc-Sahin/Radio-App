@@ -1,14 +1,20 @@
 package com.example.radio.adapter;
 
+import static androidx.core.content.ContextCompat.getDrawable;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.radio.MeinungActivity;
@@ -24,11 +30,14 @@ import java.util.List;
  */
 public class ModAdapter extends RecyclerView.Adapter<ModAdapter.ViewHolder> {
     List<Moderator> moderatorList;
+    Context context;
+
 
     public ModAdapter() {
     }
 
-    public ModAdapter(List<Moderator> moderatorList){
+    public ModAdapter(List<Moderator> moderatorList,Context context){
+        this.context=context;
         this.moderatorList = moderatorList;
     }
     @NonNull
@@ -40,6 +49,19 @@ public class ModAdapter extends RecyclerView.Adapter<ModAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.name.setText(moderatorList.get(position).getName());
+        String moderatorName=moderatorList.get(position).getName();
+        if (moderatorName.equals("Marc")) {
+
+            holder.imageView.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.marc));
+
+        } else if (moderatorName.equals("Glademir")) {
+            holder.imageView.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.glademir));
+
+
+        } else {
+            holder.imageView.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.sandra));
+
+        }
 
 
 
@@ -53,7 +75,7 @@ public class ModAdapter extends RecyclerView.Adapter<ModAdapter.ViewHolder> {
     }
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         View view;
-
+        ImageView imageView;
         TextView name;
         private Context context;
 
@@ -62,6 +84,7 @@ public class ModAdapter extends RecyclerView.Adapter<ModAdapter.ViewHolder> {
             super(itemView);
             view = itemView;
             name = view.findViewById(R.id.moderatorNameTextView);
+            imageView=view.findViewById(R.id.imgMod);
             view.setOnClickListener(this);
         }
 
