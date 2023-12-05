@@ -1,5 +1,7 @@
 package com.example.radio.viewmodel;
 
+import android.content.Context;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -25,10 +27,10 @@ public class RatingViewModel extends ViewModel {
 
 
     }
-    public void saveRating(String playlistid, String userid, Rating rating) {
+    public void saveRating(String playlistid, Rating rating) {
         ratingRepository = new RatingRepository();
         mFirestore = FirebaseFirestore.getInstance();
-        ratingRepository.addRating(playlistid, userid, rating);
+        ratingRepository.addRating(playlistid, rating);
 
     }
 }

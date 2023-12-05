@@ -1,5 +1,6 @@
 package com.example.radio;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -118,9 +119,8 @@ viewPager2.setAdapter(ratingAdapter);
 
 
                                 Rating rating = new Rating(nameValue, kommentarValue, sternValue);
-                                ratingViewModel.saveRating(itemId, nameValue, rating);
-                                Snackbar.make(findViewById(R.id.rootPlaylistdetails), R.string.text_label, Snackbar.LENGTH_SHORT)
-                                        .show();
+                                ratingViewModel.saveRating(itemId, rating);
+
                             }
                             else  {
                                 Snackbar.make(findViewById(R.id.rootPlaylistdetails), "Bitte Name und Sterne angeben", Snackbar.LENGTH_SHORT)

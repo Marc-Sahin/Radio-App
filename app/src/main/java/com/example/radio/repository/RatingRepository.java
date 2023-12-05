@@ -2,15 +2,20 @@ package com.example.radio.repository;
 
 import static androidx.media3.common.MediaLibraryInfo.TAG;
 
+import android.content.Context;
 import android.util.Log;
+import android.view.Window;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.radio.PlaylistDetailsActivity;
+import com.example.radio.R;
 import com.example.radio.model.Rating;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -22,7 +27,7 @@ import java.util.List;
 
 
 public class RatingRepository
-{
+{PlaylistDetailsActivity playlistDetailsActivity;
     MutableLiveData<List<Rating>> RatingListMutableLiveData;
     FirebaseFirestore mFirestore;
     MutableLiveData<Rating> RatingMutableLiveData;
@@ -56,9 +61,9 @@ public class RatingRepository
         }});
         return RatingListMutableLiveData;
     }
-    public void addRating(String playlistid, String userid, Rating rating) {
+    public void addRating(String playlistid, Rating rating) {
         Log.i("TAG", "addRating: ");
-        mFirestore.collection("playlist").document(playlistid).collection("bewertung").document(userid).set(rating)
+        mFirestore.collection("playlist").document(playlistid).collection("bewertung").document(rating.getUserid()).set(rating)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -66,8 +71,11 @@ public class RatingRepository
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
+
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        Snackbar.make(playlistDetailsActivity.findViewById(R.id.rootPlaylistdetails), R.string.text_label, Snackbar.LENGTH_SHORT)
+                                .show();
                         Log.w("TAG", "Error writing document", e);
                     }
                 });

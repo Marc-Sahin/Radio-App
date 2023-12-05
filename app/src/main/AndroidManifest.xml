@@ -54,7 +54,6 @@
         <activity
 
             android:name=".PlaylistDetailsActivity"
-            android:windowSoftInputMode="adjustNothing"
 
         android:exported="true"
             android:label="Playlist"

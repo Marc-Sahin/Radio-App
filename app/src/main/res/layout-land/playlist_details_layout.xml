@@ -15,10 +15,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/title"
+        <TextView            android:id="@+id/title"
+
+            android:layout_width="match_parent"
             android:layout_weight=".2"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
 
@@ -27,24 +27,26 @@
         <TextView
             android:id="@+id/interpret"
             android:layout_weight=".2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="TextView" />
 
         <TextView
             android:id="@+id/länge"
+            android:layout_gravity="center_horizontal"
             android:layout_weight=".2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:text="TextView" />
 
 
         <TextView
             android:id="@+id/album"
             android:layout_weight=".2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="TextView"/>
@@ -52,7 +54,7 @@
         <TextView
             android:id="@+id/veröffentlichung"
             android:layout_weight=".2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="TextView"/>
