@@ -1,5 +1,7 @@
 package com.example.radio.viewmodel;
 
+import android.content.Context;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -29,10 +31,10 @@ public class ModRatingViewModel extends ViewModel {
 
 
     }
-    public void saveRating(String mod, String userid, ModeratorBewertung moderatorBewertung) {
+    public void saveRating(String mod,String userid, ModeratorBewertung moderatorBewertung,Context context) {
         modBewertungRepository=new ModBewertungRepository();
         mFirestore = FirebaseFirestore.getInstance();
-        modBewertungRepository.addRating(mod, userid, moderatorBewertung);
+        modBewertungRepository.addRating(mod, userid,moderatorBewertung,context);
 
     }
 

@@ -1,11 +1,14 @@
 package com.example.radio.repository;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.radio.R;
 import com.example.radio.model.ModeratorBewertung;
 import com.example.radio.model.Rating;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,19 +40,20 @@ public class ModBewertungRepository
 
 
 
-    public void addRating(String mod, String userid, ModeratorBewertung moderatorBewertung) {
+    public void addRating(String mod, String userid, ModeratorBewertung moderatorBewertung, Context context) {
         Log.i("TAG", "addRating: ");
         mFirestore.collection("moderator").document(mod).collection("bewertung").document(userid).set(moderatorBewertung)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Log.d("TAG", "DocumentSnapshot successfully written!");
+                        Toast.makeText(context, R.string.text_label, Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w("TAG", "Error writing document", e);
+                        Toast.makeText(context, "Fehlgeschlagen! Bewertung konnte nicht gespeichert werden", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 

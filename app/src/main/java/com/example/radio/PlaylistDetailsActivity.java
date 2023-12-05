@@ -117,9 +117,9 @@ viewPager2.setAdapter(ratingAdapter);
                                 AlertDialog dialog = builder.create();
                                 builder.show();
 
-
+                                Context context=getApplicationContext();
                                 Rating rating = new Rating(nameValue, kommentarValue, sternValue);
-                                ratingViewModel.saveRating(itemId, rating);
+                                ratingViewModel.saveRating(itemId, rating,context);
 
                             }
                             else  {
@@ -213,7 +213,7 @@ viewPager2.setAdapter(ratingAdapter);
         });
 
 
-                Snackbar.make(findViewById(R.id.rootPlaylistdetails), R.string.text_label, Snackbar.LENGTH_SHORT)
+                Snackbar.make(findViewById(R.id.rootPlaylistdetails), "Moderator wurde benachrichtigt", Snackbar.LENGTH_SHORT)
                         .show();
 
     }

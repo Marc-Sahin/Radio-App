@@ -5,6 +5,7 @@ import static androidx.media3.common.MediaLibraryInfo.TAG;
 import android.content.Context;
 import android.util.Log;
 import android.view.Window;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -61,22 +62,23 @@ public class RatingRepository
         }});
         return RatingListMutableLiveData;
     }
-    public void addRating(String playlistid, Rating rating) {
+    public void addRating(String playlistid, Rating rating, Context context) {
         Log.i("TAG", "addRating: ");
         mFirestore.collection("playlist").document(playlistid).collection("bewertung").document(rating.getUserid()).set(rating)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Log.d("TAG", "DocumentSnapshot successfully written!");
+
+                        Toast.makeText(context, R.string.text_label, Toast.LENGTH_SHORT).show();
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
 
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Snackbar.make(playlistDetailsActivity.findViewById(R.id.rootPlaylistdetails), R.string.text_label, Snackbar.LENGTH_SHORT)
-                                .show();
-                        Log.w("TAG", "Error writing document", e);
+                        Toast.makeText(context, "Fehlgeschlagen! Bewertung konnte nicht gespeichert werden", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 

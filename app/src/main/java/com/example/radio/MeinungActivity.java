@@ -1,5 +1,6 @@
 package com.example.radio;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -32,13 +33,15 @@ import javax.mail.internet.MimeMultipart;
 
 public class MeinungActivity extends AppCompatActivity {
     ModeratorBewertung moderatorBewertung;
+    Context context;
+    ModRatingViewModel modRatingViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.deine_meinung);
 
-        ModRatingViewModel modRatingViewModel=new ViewModelProvider(this).get(ModRatingViewModel.class);
+        modRatingViewModel=new ViewModelProvider(this).get(ModRatingViewModel.class);
 
         //Textfelder deklarieren
         TextInputEditText nameText = findViewById(R.id.name);
@@ -62,8 +65,9 @@ public class MeinungActivity extends AppCompatActivity {
                 if (!nameValue.equals("") && slideval!=0) {
 
                     //Moderator Bewertung speichern
+                    context=getApplicationContext();
                     moderatorBewertung = new ModeratorBewertung(nameValue, kommval, slideval);
-                    modRatingViewModel.saveRating(mod,nameValue,moderatorBewertung);
+                    modRatingViewModel.saveRating(mod,nameValue,moderatorBewertung,context);
 
                     // MODERATOR benachrichtigung senden
                     send(nameValue,kommval,slideval);
@@ -151,7 +155,7 @@ public class MeinungActivity extends AppCompatActivity {
             }
         });
         // Nachricht gesendet Benachrichtigung
-        Snackbar.make(findViewById(R.id.meinung), R.string.text_label, Snackbar.LENGTH_SHORT)
+        Snackbar.make(findViewById(R.id.meinung), "Moderator wurde benachrichtigt", Snackbar.LENGTH_SHORT)
                 .show();
     }
 }

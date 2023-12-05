@@ -27,10 +27,10 @@ public class RatingViewModel extends ViewModel {
 
 
     }
-    public void saveRating(String playlistid, Rating rating) {
+    public void saveRating(String playlistid, Rating rating,Context context) {
         ratingRepository = new RatingRepository();
         mFirestore = FirebaseFirestore.getInstance();
-        ratingRepository.addRating(playlistid, rating);
+        ratingRepository.addRating(playlistid, rating,context);
 
     }
 }
