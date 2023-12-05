@@ -1,45 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#FFC400">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:weightSum="0.6"
         android:layout_height="wrap_content"
+        android:background="#FFC400"
         android:orientation="horizontal"
+        android:weightSum="0.6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView            android:id="@+id/title"
+        <TextView
+            android:id="@+id/title"
 
             android:layout_width="match_parent"
-            android:layout_weight=".2"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:layout_weight=".2"
+            android:background="#FFAB00"
 
-        android:text="TextView" />
+            android:gravity="center_horizontal"
+            android:text="TextView" />
 
         <TextView
             android:id="@+id/interpret"
-            android:layout_weight=".2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight=".2"
+            android:background="#B9FFAB00"
             android:gravity="center_horizontal"
             android:text="TextView" />
 
 
-
         <TextView
             android:id="@+id/album"
-            android:layout_weight=".2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight=".2"
+            android:background="#E8FFD600"
             android:gravity="center_horizontal"
-            android:text="TextView"/>
+            android:text="TextView" />
     </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
