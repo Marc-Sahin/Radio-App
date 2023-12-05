@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/theme_card_text_second"
             android:gravity="center_horizontal"
@@ -67,32 +67,12 @@
                 android:textSize="18sp" />
         </TableRow>
 
+
+
         <TableRow
+            android:layout_width="match_parent"
             android:background="@color/theme_card_text_second"
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Länge" />
-
-            <TextView
-                android:id="@+id/länge"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="TextView" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
@@ -102,6 +82,7 @@
 
                 android:layout_height="wrap_content"
                 android:gravity="center"
+
                 android:text="Album" />
 
             <TextView
@@ -115,30 +96,7 @@
                 android:textSize="18sp" />
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
 
-            android:background="@color/theme_card_text_second"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Veröffentlichung" />
-
-            <TextView
-                android:id="@+id/veröffentlichung"
-                android:layout_width="wrap_content"
-                android:layout_weight="0.5"
-
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="TextView"
-                android:textSize="18sp" />
-        </TableRow>
     </TableLayout>
 
     <com.google.android.material.divider.MaterialDivider

@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:weightSum="1"
+        android:weightSum="0.6"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,27 +32,10 @@
             android:gravity="center_horizontal"
             android:text="TextView" />
 
-        <TextView
-            android:id="@+id/länge"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight=".2"
-            android:layout_width="match_parent"
-
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="TextView" />
 
 
         <TextView
             android:id="@+id/album"
-            android:layout_weight=".2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="TextView"/>
-
-        <TextView
-            android:id="@+id/veröffentlichung"
             android:layout_weight=".2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
