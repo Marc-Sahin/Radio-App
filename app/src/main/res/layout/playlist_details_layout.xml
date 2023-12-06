@@ -12,16 +12,17 @@
 
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:background="#FFC400"
         android:orientation="horizontal"
         android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
 
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/theme_card_text_second"
+            android:background="@color/theme_bar"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
@@ -29,15 +30,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-            android:gravity="center"
+                android:gravity="center"
                 android:text="@string/titel"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/title"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:gravity="center_horizontal"
-                android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textSize="18sp" />
         </TableRow>
@@ -46,6 +47,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#FFAB00"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
@@ -58,22 +60,21 @@
 
             <TextView
                 android:id="@+id/interpret"
-                android:layout_weight="0.5"
-
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:gravity="center_horizontal"
                 android:text="TextView"
                 android:textSize="18sp" />
         </TableRow>
 
 
-
         <TableRow
             android:layout_width="match_parent"
-            android:background="@color/theme_card_text_second"
-
             android:layout_height="match_parent"
+
+            android:background="@color/theme_card"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
@@ -87,10 +88,10 @@
 
             <TextView
                 android:id="@+id/album"
-                android:layout_weight="0.5"
-
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:gravity="center"
                 android:text="TextView"
                 android:textSize="18sp" />

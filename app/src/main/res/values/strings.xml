@@ -4,14 +4,14 @@
     <string name="playlists">Playlists</string>
     <string name="deine_meinung">Deine Meinung</string>
     <string name="zurueck_btn">Zurück</string>
-    <string name="playlist_msg">Wähle eine Playlist aus</string>
+    <string name="playlist_msg">Playlists</string>
     <string name="moderator_onair">Moderator on Air</string>
     <string name="playlist_meinung">
         <b>Deine Meinung zählt!</b>\n\n
         Bewerte unsere aktuellen Songs von 1 (nicht so toll) bis 5 (absolut genial). Füge gerne einen
         Kommentar hinzu, um uns zu sagen, was du magst oder was du ändern würdest. Dein Feedback ist uns wichtig!\n\n
         Deine Bewertungen gehen direkt an die Radiostation und helfen uns, die Playlist zu verbessern.
-        Sieh unten, welche Songs die Community liebt. Deine Meinung macht den Unterschied!\n\n
+        Sieh nach, welche Songs die Community liebt. Deine Meinung macht den Unterschied!\n\n
         Also, worauf wartest du noch? Lass uns wissen, wie dir die Songs gefallen – deine Meinung zählt! ❤️🎉🎶
 
 </string>
@@ -23,10 +23,16 @@
     <string name="songwunsch_abgeben">Songwunsch abgeben</string>
     <string name="text_label">Bewertung erfolgreich gesendet</string>
     <string name="name">Name</string>
-    <string name="bewertung">Bewertung</string>
+    <string name="bewertung">Dein Feedback zählt!\n\nTeile uns mit, was du von unserer Moderation hältst. Wähle einen der drei Moderatoren Glademir, Marc oder Sandra und bewerte ihre Performance.\n\nDeine Meinung ist uns wichtig, um unser Radioprogramm weiter zu verbessern!</string>
+    <string name="bewertung_2">Hilf uns dabei das Radioerlebnis für dich und andere Hörer noch angenehmer zu gestalten. Deine Rückmeldungen motivieren uns und tragen dazu bei, dass unser Programm deinen Erwartungen entspricht.\n\nDanke, dass du Teil unserer Community bist und uns hilfst, das Beste aus jeder Sendung zu machen! 🎤🎧</string>
     <string name="kommentar_optional">Kommentar (optional)</string>
     <string name="slider">Slider</string>
     <string name="titel">Titel</string>
     <string name="interpret">Interpret</string>
     <string name="moderator_bild">Moderator Bild</string>
+    <string name="songwunsch_text"><b>"Willkommen beim Song-Wunsch! 🎶</b> \n\nWir möchten,dass dein Radioerlebnis noch persönlicher wird. Gib einfach deinen Namen und deinen Songwunsch unten ein, und lass uns zusammen die perfekte Playlist gestalten. Deine Musik ist uns wichtig!</string>
+    <string name="songwunsch_titel">Song wünschen</string>
+    <string name="moderator_auswahl">Unsere Moderatoren</string>
+    <string name="moderator_bewerten">Bewerte dein Moderator</string>
+    <string name="bewertung_playlist">Dein Feedback ist uns wichtig! Bewerte die Playlist mit Sternen und lass uns wissen, was du denkst.\n\nDrücke auf den Bewertung abschicken-Button und gestalte mit uns zusammen das perfekte Radioerlebnis. Deine Meinung trägt dazu bei, dass die Playlists noch besser auf deine Vorlieben abgestimmt werden.Danke, dass du Teil unserer Hörergemeinschaft bist und uns hilfst, die besten Playlists für dich zu erstellen! 🎧🤩"**</string>
 </resources>

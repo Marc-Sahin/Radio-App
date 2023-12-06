@@ -8,6 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFC400"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +32,8 @@
                     android:padding="5dp">
 
 
+
+
                     <TextView
                         android:id="@+id/userid"
                         android:layout_width="match_parent"
@@ -38,10 +41,14 @@
                         android:gravity="center"
                         android:text="TextView"
                         android:textSize="18sp" />
-
-                    <TextView
+                    <RatingBar
+                        android:valueFrom="0"
+                        android:stepSize="1"
+                        android:isIndicator="true"
+                        android:layout_gravity="center_horizontal"
+                        android:valueTo="5"
                         android:id="@+id/sterne"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:text="TextView"
