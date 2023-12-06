@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,7 +38,7 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.userid.setText(String.valueOf(ratingList.get(position).getUserid()));
-        holder.sterne.setText(String.valueOf(ratingList.get(position).getSterne()));
+        holder.sterne.setRating(ratingList.get(position).getSterne());
         holder.kommentar.setText(String.valueOf(ratingList.get(position).getKommentar()));
 
 
@@ -55,7 +56,7 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.ViewHolder
         TextView userid;
 
         TextView kommentar;
-        TextView sterne;
+       RatingBar sterne;
         private Context context;
 
         public ViewHolder(@NonNull View itemView) {
