@@ -6,33 +6,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlaylistsActivity">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/relativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/playlist_start"
-            style="@style/TextAppearance.AppCompat.Headline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#FFA000"
-            android:paddingLeft="5dp"
-            android:paddingTop="15dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="15dp"
-            android:text="@string/playlist_msg"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/container"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/playlist_start"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFA000"
+                android:paddingLeft="5dp"
+                android:paddingTop="15dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="15dp"
+                android:text="@string/playlist_msg"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/container"
-
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
@@ -45,20 +52,20 @@
         </androidx.recyclerview.widget.RecyclerView>
 
 
-        <TextView
-            android:id="@+id/deine_meinung_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/playlist_meinung"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-            android:textIsSelectable="false"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/container"
-            app:layout_constraintTop_toBottomOf="@+id/container" />
+            <TextView
+                android:id="@+id/deine_meinung_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/playlist_meinung"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textIsSelectable="false"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/container"
+                app:layout_constraintTop_toBottomOf="@+id/container" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>        </ScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>

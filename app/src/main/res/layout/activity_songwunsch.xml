@@ -30,8 +30,6 @@
         android:id="@+id/textSongwunsch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif-medium"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -47,11 +45,12 @@
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="252dp"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textSongwunsch">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
